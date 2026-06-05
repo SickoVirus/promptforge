@@ -102,7 +102,7 @@ const Auth = (function() {
       isLoading = false;
       loadError = err;
       console.error('❌ Clerk failed to load:', err.message);
-      console.warn('💡 Clerk script was loaded from https://clerk.com/v5/clerk.js - check the Network tab to verify');
+      console.warn('💡 Clerk script was loaded from your Frontend API URL - check the Network tab for clerk.browser.js');
     }
   }
 
