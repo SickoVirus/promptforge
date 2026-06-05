@@ -1,3 +1,4 @@
+// bash
 git init
 git add .
 git commit "Initial commit"
