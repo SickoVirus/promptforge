@@ -151,8 +151,12 @@ const Auth = (function() {
   async function signOut() {
     if (!isReady || typeof Clerk === 'undefined') return;
     try {
-      // Redirect to the current page after sign out to stay on /promptforge
-      await Clerk.signOut({ redirectUrl: window.location.href });
+      // Revoke the current session directly to avoid Clerk's built-in redirect
+      if (Clerk.session) {
+        await Clerk.session.revoke();
+      } else {
+        await Clerk.signOut();
+      }
       currentUser = null;
       currentRole = 'free';
       updateUI();
