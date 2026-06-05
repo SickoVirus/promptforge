@@ -612,6 +612,10 @@ h3 { font-size: 1.25rem; }
   background: var(--accent-light);
   color: var(--accent-dark);
 }
+.badge-industry {
+  background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+  color: #065F46;
+}
 .output-body {
   flex: 1;
   padding: 24px;
@@ -740,59 +744,86 @@ h3 { font-size: 1.25rem; }
   font-size: 0.95rem;
   line-height: 1.6;
 }
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
 .history-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 18px;
+  gap: 16px;
+  padding: 18px 22px;
   background: var(--white);
   border: 1px solid var(--gray-200);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: var(--transition);
 }
 .history-item:hover {
   border-color: var(--primary);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
 }
 .history-item.active {
   border-color: var(--primary);
   background: var(--primary-subtle);
+  box-shadow: 0 0 0 2px rgba(79,70,229,0.15);
 }
 .history-item-icon {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+}
+.history-item.active .history-item-icon {
+  background: var(--white);
 }
 .history-item-info {
   flex: 1;
   min-width: 0;
 }
 .history-item-title {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--gray-800);
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.4;
 }
 .history-item-meta {
   display: flex;
-  gap: 8px;
-  font-size: 0.75rem;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.8rem;
   color: var(--gray-500);
+  align-items: center;
+}
+.history-item-meta span {
+  display: inline-flex;
+  align-items: center;
 }
 .history-item-actions {
   display: flex;
-  gap: 4px;
+  gap: 6px;
   flex-shrink: 0;
 }
 .history-item-actions button {
   background: none;
   border: none;
-  padding: 4px 8px;
-  font-size: 1rem;
-  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 1.1rem;
+  border-radius: 6px;
   transition: var(--transition);
   color: var(--gray-400);
 }
@@ -816,6 +847,30 @@ h3 { font-size: 1.25rem; }
   border-radius: var(--radius-md);
   font-size: 0.9rem;
   color: var(--gray-600);
+}
+
+/* Action toast notification (for favorites, export, etc.) */
+.action-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--gray-900);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-xl);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 3000;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.action-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* Copy toast notification */

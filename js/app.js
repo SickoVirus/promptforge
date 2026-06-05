@@ -1151,7 +1151,7 @@ Each video: Problem → {product} solution → CTA
     return div.innerHTML;
   }
 
-  function truncateText(text, maxLen = 60) {
+  function truncateText(text, maxLen = 100) {
     if (text.length <= maxLen) return text;
     return text.slice(0, maxLen) + '...';
   }
@@ -1357,7 +1357,7 @@ Each video: Problem → {product} solution → CTA
         <div class="history-item ${isActive ? 'active' : ''}" data-id="${entry.id}">
           <span class="history-item-icon">${getCategoryEmoji(entry.category)}</span>
           <div class="history-item-info" onclick="window.__loadHistory('${entry.id}')">
-            <div class="history-item-title">${truncateText(entry.prompt.replace(/\n/g, ' '), 70)}</div>
+            <div class="history-item-title">${truncateText(entry.prompt.replace(/\n/g, ' '), 100)}</div>
             <div class="history-item-meta">
               <span>${getCategoryName(entry.category)}</span>
               <span>•</span>
@@ -1467,9 +1467,9 @@ Each video: Problem → {product} solution → CTA
       .replace(/\{audience\}/g, audience)
       .replace(/\{goal\}/g, goal);
 
-    // Append industry modifier for premium users
+    // Prepend industry context at the TOP of the prompt for premium users
     if (industryMod) {
-      prompt += industryMod;
+      prompt = industryMod + '\n\n' + prompt;
     }
 
     currentPrompt = prompt;
@@ -1479,6 +1479,18 @@ Each video: Problem → {product} solution → CTA
     // Update badges
     elements.categoryBadge.textContent = getCategoryName(category);
     elements.toneBadge.textContent = `${getToneEmoji(tone)} ${tone}`;
+
+    // Update industry badge (show for premium users with a non-general industry)
+    const industryBadge = document.getElementById('industryBadge');
+    if (industryBadge) {
+      const industryName = elements.industry ? elements.industry.options[elements.industry.selectedIndex]?.text : '';
+      if (canUsePremium && industry !== 'general' && industryName) {
+        industryBadge.textContent = `🏭 ${industryName}`;
+        industryBadge.style.display = 'inline-block';
+      } else {
+        industryBadge.style.display = 'none';
+      }
+    }
 
     // Update template type badge
     if (elements.templateTypeBadge) {
@@ -1558,6 +1570,24 @@ Each video: Problem → {product} solution → CTA
   }
 
   // ============================================
+  // ACTION TOAST (for favorites, export, etc.)
+  // ============================================
+  let actionToastEl = null;
+  function showActionToast(message) {
+    if (!actionToastEl) {
+      actionToastEl = document.createElement('div');
+      actionToastEl.className = 'action-toast';
+      document.body.appendChild(actionToastEl);
+    }
+    actionToastEl.textContent = message;
+    actionToastEl.classList.add('show');
+    clearTimeout(actionToastEl._hideTimer);
+    actionToastEl._hideTimer = setTimeout(() => {
+      actionToastEl.classList.remove('show');
+    }, 2500);
+  }
+
+  // ============================================
   // REGENERATE
   // ============================================
   function regeneratePrompt() {
@@ -1576,8 +1606,11 @@ Each video: Problem → {product} solution → CTA
     // Find the MOST RECENT history entry for this exact prompt
     const entry = [...promptHistory].reverse().find(e => e.prompt === currentPrompt);
     if (entry) {
+      const wasFav = favorites.has(entry.id);
       toggleFavorite(entry.id);
-      elements.favoriteBtn.classList.toggle('is-fav', favorites.has(entry.id));
+      elements.favoriteBtn.classList.toggle('is-fav', !wasFav);
+      // Show feedback toast
+      showActionToast(wasFav ? 'Removed from favorites' : 'Added to favorites 💛');
     }
   }
 
@@ -1614,6 +1647,7 @@ Each video: Problem → {product} solution → CTA
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+      showActionToast('📄 Prompt downloaded! Check your Downloads folder.');
     });
   }
 
