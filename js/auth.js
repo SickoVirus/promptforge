@@ -151,26 +151,29 @@ const Auth = (function() {
   async function signOut() {
     if (!isReady || typeof Clerk === 'undefined') return;
     try {
-      // Use the underlying Clerk client sessions API to sign out without navigation
-      // This bypasses Clerk's internal navigate() that always redirects to root
-      const session = Clerk.session;
-      if (session?.id) {
-        const token = session.getToken ? await session.getToken() : null;
-        const jwt = token?.jwt || token || '';
-        const apiUrl = 'https://suitable-egret-62.clerk.accounts.dev';
-        await fetch(apiUrl + '/v1/sessions/' + session.id + '/revoke', {
-          method: 'POST',
-          headers: {
-            'Authorization': 'Bearer ' + jwt,
-            'Content-Type': 'application/json'
-          },
-          credentials: 'include'
-        });
+      // Clear all Clerk cookies to invalidate session locally
+      // This avoids CORS issues with direct API calls to Clerk's servers
+      document.cookie.split(';').forEach(c => {
+        const eqPos = c.indexOf('=');
+        const name = eqPos > -1 ? c.substr(0, eqPos).trim() : c.trim();
+        // Clear for all possible paths
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/promptforge;';
+      });
+
+      // Clear Clerk-related localStorage items
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const key = localStorage.key(i);
+        if (key && (key.startsWith('clerk') || key.startsWith('__clerk') || key.includes('clerk'))) {
+          localStorage.removeItem(key);
+        }
       }
+
       currentUser = null;
       currentRole = 'free';
       updateUI();
       notifyListeners();
+      console.log('✅ Signed out locally');
     } catch(e) {
       console.error('Sign out error:', e);
     }
