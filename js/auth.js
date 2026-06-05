@@ -246,16 +246,55 @@ const Auth = (function() {
   // ============================================
   // PUBLIC API
   // ============================================
+  // ============================================
+  // PREMIUM ACCESS HELPERS
+  // ============================================
+  function isPremium() {
+    return currentRole === 'premium' || currentRole === 'ultimate';
+  }
+
+  function isUltimate() {
+    return currentRole === 'ultimate';
+  }
+
+  function requirePremium(featureName) {
+    if (!isReady) {
+      console.warn('Auth not ready yet');
+      return false;
+    }
+    if (isPremium()) return true;
+
+    // Show premium upsell modal
+    const modal = document.getElementById('premiumModal');
+    if (modal) modal.classList.add('open');
+    return false;
+  }
+
+  function hasAccess(feature) {
+    if (feature === 'premium') return isPremium();
+    if (feature === 'ultimate') return isUltimate();
+    if (feature === 'history') return isPremium();
+    if (feature === 'favorites') return isPremium();
+    if (feature === 'export') return isPremium();
+    if (feature === 'industries') return isPremium();
+    if (feature === 'premiumTemplates') return isPremium();
+    return true; // free features are available to everyone
+  }
+
   return {
     init,
     openSignIn,
     openSignUp,
     signOut,
     onAuthChange,
+    requirePremium,
+    hasAccess,
     get isReady() { return isReady; },
     get user() { return currentUser; },
     get role() { return currentRole; },
-    get isLoggedIn() { return !!currentUser; }
+    get isLoggedIn() { return !!currentUser; },
+    get isPremium() { return isPremium(); },
+    get isUltimate() { return isUltimate(); }
   };
 })();
 

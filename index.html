@@ -185,6 +185,32 @@
                 <option value="tiktok">TikTok Scripts</option>
               </select>
             </div>
+
+          <div class="premium-locked" data-feature="industries">
+            <div class="form-group">
+              <label for="industry">
+                Industry Pack
+                <span class="premium-badge-label">PREMIUM</span>
+              </label>
+              <div class="select-wrapper">
+                <select id="industry">
+                  <option value="general">General</option>
+                  <option value="ecommerce">E-commerce &amp; Retail</option>
+                  <option value="restaurant">Restaurant &amp; Food</option>
+                  <option value="realestate">Real Estate</option>
+                  <option value="fitness">Fitness &amp; Wellness</option>
+                  <option value="beauty">Beauty &amp; Spa</option>
+                  <option value="consulting">Consulting &amp; Services</option>
+                  <option value="health">Health &amp; Medical</option>
+                  <option value="education">Education &amp; Training</option>
+                  <option value="tech">Technology &amp; SaaS</option>
+                  <option value="travel">Travel &amp; Hospitality</option>
+                  <option value="fashion">Fashion &amp; Apparel</option>
+                  <option value="home">Home &amp; Garden</option>
+                </select>
+              </div>
+            </div>
+          </div>
           </div>
 
           <div class="form-row">
@@ -225,10 +251,13 @@
             <textarea id="goal" rows="3" placeholder="What do you want this content to achieve? (e.g. Drive sales, Build brand awareness, Announce a sale)"></textarea>
           </div>
 
-          <button class="btn btn-primary btn-generate" id="generateBtn">
-            <span class="btn-icon">&#9889;</span>
-            Generate Prompt
-          </button>
+          <div class="generate-bar">
+            <button class="btn btn-primary btn-generate" id="generateBtn">
+              <span class="btn-icon">&#9889;</span>
+              Generate Prompt
+            </button>
+            <span class="template-type-badge" id="templateTypeBadge">Free Template</span>
+          </div>
         </div>
 
         <div class="generator-output" id="outputSection">
@@ -253,9 +282,45 @@
             <button class="btn btn-regenerate" id="regenerateBtn" disabled>
               &#128260; Regenerate
             </button>
+            <button class="btn btn-favorite" id="favoriteBtn" disabled title="Save to favorites">
+              <span class="fav-icon">&#9734;</span>
+            </button>
+            <button class="btn btn-export" id="exportBtn" disabled title="Download as PDF">
+              <span class="export-icon">&#128196;</span>
+            </button>
           </div>
           <div class="copy-toast" id="copyToast">&#10003; Copied to clipboard!</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- History Panel -->
+  <section class="history-section" id="history">
+    <div class="container">
+      <div class="section-header">
+        <h2>Your <span class="gradient-text">Prompt History</span></h2>
+        <p>Access your saved and favorite prompts</p>
+      </div>
+      <div class="history-toolbar">
+        <div class="history-tabs">
+          <button class="history-tab active" data-view="recent">Recent</button>
+          <button class="history-tab premium-locked" data-feature="favorites" data-view="favorites">
+            Favorites <span class="fav-count" id="favCount">0</span>
+          </button>
+        </div>
+        <div class="history-info">
+          <span id="historyInfo">Premium users get unlimited history &amp; favorites</span>
+        </div>
+      </div>
+      <div class="history-list" id="historyList">
+        <div class="history-empty">
+          <span class="history-empty-icon">&#128221;</span>
+          <p>No prompts saved yet. Generate a prompt and it will appear here!</p>
+        </div>
+      </div>
+      <div class="history-premium-cta premium-locked" data-feature="favorites" id="historyPremiumCta">
+        <p>&#128081; <strong>Premium</strong> — Save unlimited prompts, mark favorites, and export with one click.</p>
       </div>
     </div>
   </section>
