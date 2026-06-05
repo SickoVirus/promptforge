@@ -151,17 +151,13 @@ const Auth = (function() {
   async function signOut() {
     if (!isReady || typeof Clerk === 'undefined') return;
     try {
-      // Clear all Clerk cookies to invalidate session locally
-      // This avoids CORS issues with direct API calls to Clerk's servers
+      // Clear all Clerk cookies and localStorage
       document.cookie.split(';').forEach(c => {
         const eqPos = c.indexOf('=');
         const name = eqPos > -1 ? c.substr(0, eqPos).trim() : c.trim();
-        // Clear for all possible paths
         document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/promptforge;';
       });
-
-      // Clear Clerk-related localStorage items
       for (let i = localStorage.length - 1; i >= 0; i--) {
         const key = localStorage.key(i);
         if (key && (key.startsWith('clerk') || key.startsWith('__clerk') || key.includes('clerk'))) {
@@ -169,11 +165,16 @@ const Auth = (function() {
         }
       }
 
+      // Tell Clerk to clear its internal session state so Sign In works again
+      if (typeof Clerk.setActive === 'function') {
+        await Clerk.setActive({ session: null });
+      }
+
       currentUser = null;
       currentRole = 'free';
       updateUI();
       notifyListeners();
-      console.log('✅ Signed out locally');
+      console.log('✅ Signed out');
     } catch(e) {
       console.error('Sign out error:', e);
     }
