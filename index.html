@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Business Prompt Generator - Create ready-to-use ChatGPT prompts for your business. Instagram posts, product descriptions, ad copy, and more." />
+  <title>Business Prompt Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">&#9889;</span>
+        <span class="logo-text">Prompt<span class="logo-highlight">Forge</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#generator">Generator</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#premium">Premium</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#premium" class="btn btn-accent nav-cta">Get Premium</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <span class="hero-badge">&#9733; Trusted by 2,000+ small businesses</span>
+        <h1>Generate Ready-to-Use<br /><span class="gradient-text">ChatGPT Prompts</span> for Your Business</h1>
+        <p class="hero-subtitle">
+          Stop staring at a blank ChatGPT screen. Fill in your details, pick a category, and get a perfectly crafted prompt — ready to copy, paste, and profit.
+        </p>
+        <div class="hero-actions">
+          <a href="#generator" class="btn btn-primary btn-lg">Start Generating Free &rarr;</a>
+          <a href="#premium" class="btn btn-outline btn-lg">See Premium Plans</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">8</span>
+            <span class="stat-label">Prompt Categories</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Templates</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Free to Use</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card card-1">
+          <div class="floating-card-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="floating-card-body">
+            <div class="code-line"><span class="keyword">Write</span> a compelling Instagram caption</div>
+            <div class="code-line"><span class="keyword">for</span> a handmade candle business</div>
+            <div class="code-line"><span class="keyword">targeting</span> eco-conscious millennials</div>
+            <div class="code-line"><span class="keyword">with a</span> warm &amp; inspirational tone</div>
+            <div class="code-line cursor-blink">|</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2>Choose Your <span class="gradient-text">Prompt Category</span></h2>
+        <p>Select from 8 specialized categories — each packed with industry-tested templates</p>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card" data-category="instagram">
+          <div class="cat-icon">&#128247;</div>
+          <h3>Instagram Posts</h3>
+          <p>Captions, stories, and carousel ideas that stop the scroll</p>
+        </div>
+        <div class="category-card" data-category="product">
+          <div class="cat-icon">&#128230;</div>
+          <h3>Product Descriptions</h3>
+          <p>Compelling copy that drives conversions and sales</p>
+        </div>
+        <div class="category-card" data-category="whatsapp">
+          <div class="cat-icon">&#128172;</div>
+          <h3>WhatsApp Messages</h3>
+          <p>Customer outreach, order updates &amp; promo broadcasts</p>
+        </div>
+        <div class="category-card" data-category="complaint">
+          <div class="cat-icon">&#128680;</div>
+          <h3>Complaint Responses</h3>
+          <p>Turn angry customers into loyal brand advocates</p>
+        </div>
+        <div class="category-card" data-category="promotion">
+          <div class="cat-icon">&#127881;</div>
+          <h3>Promotion Ideas</h3>
+          <p>Creative campaigns, discounts &amp; seasonal offers</p>
+        </div>
+        <div class="category-card" data-category="calendar">
+          <div class="cat-icon">&#128197;</div>
+          <h3>Content Calendars</h3>
+          <p>30-day content plans tailored to your business</p>
+        </div>
+        <div class="category-card" data-category="adcopy">
+          <div class="cat-icon">&#128200;</div>
+          <h3>Ad Copy</h3>
+          <p>Facebook, Google &amp; TikTok ad copy that converts</p>
+        </div>
+        <div class="category-card" data-category="tiktok">
+          <div class="cat-icon">&#127916;</div>
+          <h3>TikTok Scripts</h3>
+          <p>Viral-ready video scripts with hooks and CTAs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Generator Section -->
+  <section class="generator" id="generator">
+    <div class="container">
+      <div class="section-header">
+        <h2>Build Your <span class="gradient-text">Perfect Prompt</span></h2>
+        <p>Fill in the details below and we'll craft a ready-to-use ChatGPT prompt for you</p>
+      </div>
+
+      <div class="generator-layout">
+        <div class="generator-form">
+          <div class="form-group">
+            <label for="category">Prompt Category</label>
+            <div class="select-wrapper">
+              <select id="category">
+                <option value="instagram">Instagram Posts</option>
+                <option value="product">Product Descriptions</option>
+                <option value="whatsapp">WhatsApp Messages</option>
+                <option value="complaint">Complaint Responses</option>
+                <option value="promotion">Promotion Ideas</option>
+                <option value="calendar">Content Calendars</option>
+                <option value="adcopy">Ad Copy</option>
+                <option value="tiktok">TikTok Scripts</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="businessType">Business Type</label>
+              <input type="text" id="businessType" placeholder="e.g. Bakery, Yoga Studio, Clothing Brand" />
+            </div>
+            <div class="form-group">
+              <label for="product">Product / Service</label>
+              <input type="text" id="product" placeholder="e.g. Artisan Sourdough Bread" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tone">Tone of Voice</label>
+              <div class="select-wrapper">
+                <select id="tone">
+                  <option value="Professional">Professional</option>
+                  <option value="Friendly">Friendly</option>
+                  <option value="Humorous">Humorous</option>
+                  <option value="Inspirational">Inspirational</option>
+                  <option value="Urgent">Urgent</option>
+                  <option value="Luxury">Luxury</option>
+                  <option value="Casual">Casual</option>
+                  <option value="Educational">Educational</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="audience">Target Audience</label>
+              <input type="text" id="audience" placeholder="e.g. Busy parents, Fitness lovers" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="goal">Message Goal</label>
+            <textarea id="goal" rows="3" placeholder="What do you want this content to achieve? (e.g. Drive sales, Build brand awareness, Announce a sale)"></textarea>
+          </div>
+
+          <button class="btn btn-primary btn-generate" id="generateBtn">
+            <span class="btn-icon">&#9889;</span>
+            Generate Prompt
+          </button>
+        </div>
+
+        <div class="generator-output" id="outputSection">
+          <div class="output-header">
+            <h3>Your Prompt</h3>
+            <div class="output-badges">
+              <span class="badge" id="categoryBadge">Instagram</span>
+              <span class="badge badge-tone" id="toneBadge">Friendly</span>
+            </div>
+          </div>
+          <div class="output-body" id="outputBody">
+            <div class="output-placeholder">
+              <span class="placeholder-icon">&#9889;</span>
+              <p>Fill in the form and click <strong>Generate</strong> to create your prompt</p>
+            </div>
+          </div>
+          <div class="output-actions">
+            <button class="btn btn-copy" id="copyBtn" disabled>
+              <span class="copy-icon">&#128203;</span>
+              <span class="copy-text">Copy to Clipboard</span>
+            </button>
+            <button class="btn btn-regenerate" id="regenerateBtn" disabled>
+              &#128260; Regenerate
+            </button>
+          </div>
+          <div class="copy-toast" id="copyToast">&#10003; Copied to clipboard!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Section -->
+  <section class="premium" id="premium">
+    <div class="container">
+      <div class="section-header">
+        <span class="premium-badge">&#9733; PREMIUM</span>
+        <h2>Unlock <span class="gradient-text">100 Advanced Prompts</span></h2>
+        <p>Get battle-tested prompts used by top-performing businesses. One-time payment. Lifetime access.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card free-card">
+          <div class="pricing-header">
+            <h3>Free</h3>
+            <div class="price"><span class="currency">$</span>0</div>
+            <p>Get started instantly</p>
+          </div>
+          <ul class="pricing-features">
+            <li>&#10003; 8 prompt categories</li>
+            <li>&#10003; Basic template generation</li>
+            <li>&#10003; Copy to clipboard</li>
+            <li>&#10007; Advanced prompt templates</li>
+            <li>&#10007; Industry-specific packs</li>
+            <li>&#10007; Priority support</li>
+          </ul>
+          <a href="#generator" class="btn btn-outline pricing-btn">Start Free</a>
+        </div>
+
+        <div class="pricing-card premium-card featured">
+          <div class="pricing-badge">Best Value</div>
+          <div class="pricing-header">
+            <h3>Premium Pack</h3>
+            <div class="price"><span class="currency">$</span>19</div>
+            <p>One-time payment &middot; Lifetime access</p>
+          </div>
+          <ul class="pricing-features">
+            <li>&#10003; Everything in Free</li>
+            <li>&#10003; 100 advanced, pre-written prompts</li>
+            <li>&#10003; Industry-specific packs (12 industries)</li>
+            <li>&#10003; Seasonal campaign templates</li>
+            <li>&#10003; A/B testing prompt variants</li>
+            <li>&#10003; Editable PDF workbook</li>
+            <li>&#10003; Lifetime updates</li>
+          </ul>
+          <button class="btn btn-primary pricing-btn" id="buyPremiumBtn">Buy Now - $19</button>
+        </div>
+
+        <div class="pricing-card bundle-card">
+          <div class="pricing-header">
+            <h3>Ultimate Bundle</h3>
+            <div class="price"><span class="currency">$</span>39</div>
+            <p>One-time payment &middot; Lifetime access</p>
+          </div>
+          <ul class="pricing-features">
+            <li>&#10003; Everything in Premium Pack</li>
+            <li>&#10003; 250 advanced prompts</li>
+            <li>&#10003; Video tutorials (6 modules)</li>
+            <li>&#10003; ChatGPT strategy guide</li>
+            <li>&#10003; Monthly prompt drops for 1 year</li>
+            <li>&#10003; Private community access</li>
+            <li>&#10003; 1-on-1 onboarding call</li>
+          </ul>
+          <button class="btn btn-accent pricing-btn" id="buyBundleBtn">Buy Now - $39</button>
+        </div>
+      </div>
+
+      <div class="premium-cta">
+        <h3>Want to buy with WhatsApp or Ko-fi?</h3>
+        <p>We've got you covered. Reach out directly and get the same premium pack.</p>
+        <div class="cta-buttons">
+          <a href="#" class="btn btn-whatsapp" id="whatsappBtn">&#128172; WhatsApp Order</a>
+          <a href="#" class="btn btn-kofi" id="kofiBtn">&#9749; Support on Ko-fi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is this really free?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! The web-based prompt generator is completely free to use. You can generate prompts for all 8 categories without paying a cent. The Premium Pack is an optional upgrade with additional pre-written prompts and resources.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do I need an API key or ChatGPT Plus?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No API key needed. This tool generates prompts that you copy and paste into ChatGPT yourself. A free ChatGPT account works perfectly, though ChatGPT Plus may give faster responses.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What's included in the Premium Pack?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>You get 100 advanced, pre-written prompts organized by industry (e-commerce, restaurants, real estate, fitness, beauty, consulting, and more). Each prompt has been A/B tested and optimized for ChatGPT. You also get seasonal campaign templates and an editable PDF workbook.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I get the Premium Pack after buying?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>After purchase via Gumroad or Ko-fi, you'll receive an email with a download link to your Premium Pack (a PDF and a text file with all 100 prompts). For WhatsApp orders, we'll send the files directly to your phone.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I get a refund?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. If the premium prompts don't help your business within 14 days, we'll refund you in full. No questions asked.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <span class="logo-icon">&#9889;</span>
+          <span class="logo-text">Prompt<span class="logo-highlight">Forge</span></span>
+        </a>
+        <p>Helping small businesses communicate better with AI.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#generator">Generator</a>
+        <a href="#categories">Categories</a>
+        <a href="#premium">Premium</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-links">
+        <h4>Categories</h4>
+        <a href="#generator" data-cat="instagram">Instagram</a>
+        <a href="#generator" data-cat="product">Products</a>
+        <a href="#generator" data-cat="adcopy">Ad Copy</a>
+        <a href="#generator" data-cat="tiktok">TikTok</a>
+      </div>
+      <div class="footer-links">
+        <h4>Purchase</h4>
+        <a href="#" id="footerGumroad">Gumroad</a>
+        <a href="#" id="footerKofi">Ko-fi</a>
+        <a href="#" id="footerWhatsapp">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 PromptForge. All rights reserved. Built for small businesses.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Premium Modal -->
+  <div class="modal-overlay" id="premiumModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-body">
+        <span class="modal-icon">&#127881;</span>
+        <h2>Get Your Premium Prompt Pack</h2>
+        <p class="modal-desc">Choose your purchase method below. You'll get instant access after payment.</p>
+        <div class="modal-options">
+          <a href="https://gumroad.com" target="_blank" rel="noopener" class="modal-option gumroad">
+            <span class="modal-option-icon">&#128179;</span>
+            <span class="modal-option-title">Buy on Gumroad</span>
+            <span class="modal-option-desc">Pay via card or PayPal &rarr;</span>
+          </a>
+          <a href="https://ko-fi.com" target="_blank" rel="noopener" class="modal-option kofi">
+            <span class="modal-option-icon">&#9749;</span>
+            <span class="modal-option-title">Buy on Ko-fi</span>
+            <span class="modal-option-desc">Support &amp; get instant download &rarr;</span>
+          </a>
+          <a href="#" class="modal-option whatsapp" id="modalWhatsapp">
+            <span class="modal-option-icon">&#128172;</span>
+            <span class="modal-option-title">Order via WhatsApp</span>
+            <span class="modal-option-desc">Chat with us to purchase &rarr;</span>
+          </a>
+        </div>
+        <p class="modal-guarantee">&#128170; 14-day money-back guarantee. No risk at all.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
