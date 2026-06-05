@@ -9,8 +9,8 @@ const Auth = (function() {
   // ============================================
   // CONFIG
   // ============================================
+  // Publishable key is set via data-clerk-publishable-key on the script tag in index.html
   const CLERK_PUBLISHABLE_KEY = 'pk_test_c3VpdGFibGUtZWdyZXQtNjIuY2xlcmsuYWNjb3VudHMuZGV2JA';
-  const CLERK_CDN = 'https://unpkg.com/@clerk/clerk-js@5/dist/clerk.browser.js';
 
   // ============================================
   // STATE
@@ -29,39 +29,25 @@ const Auth = (function() {
   let els = {};
 
   // ============================================
-  // DYNAMIC SCRIPT LOADER
+  // WAIT FOR CLERK TO LOAD
   // ============================================
-  function loadClerkScript() {
+  function waitForClerk(timeout = 10000) {
     return new Promise((resolve, reject) => {
-      // Check if already loaded
-      if (typeof Clerk !== 'undefined') {
+      if (typeof window.Clerk !== 'undefined') {
         resolve();
         return;
       }
-
-      // Check if script tag already exists
-      let script = document.querySelector(`script[src="${CLERK_CDN}"]`);
-      if (!script) {
-        script = document.createElement('script');
-        script.src = CLERK_CDN;
-        script.crossOrigin = 'anonymous';
-        script.async = true;
-        document.head.appendChild(script);
-      }
-
-      // Wait for load
-      script.onload = () => {
-        // Clerk SDK takes a moment to initialize after script loads
-        const checkClerk = () => {
-          if (typeof Clerk !== 'undefined') {
-            resolve();
-          } else {
-            setTimeout(checkClerk, 50);
-          }
-        };
-        setTimeout(checkClerk, 100);
+      const start = Date.now();
+      const check = () => {
+        if (typeof window.Clerk !== 'undefined') {
+          resolve();
+        } else if (Date.now() - start > timeout) {
+          reject(new Error('Clerk SDK failed to load within ' + (timeout / 1000) + 's'));
+        } else {
+          setTimeout(check, 50);
+        }
       };
-      script.onerror = () => reject(new Error('Failed to load Clerk SDK from CDN'));
+      check();
     });
   }
 
@@ -87,10 +73,10 @@ const Auth = (function() {
 
     isLoading = true;
 
-    // Load Clerk script dynamically
     try {
-      await loadClerkScript();
-      await Clerk.load({ publishableKey: CLERK_PUBLISHABLE_KEY });
+      // Clerk script loaded via script tag in index.html — wait for it to be available
+      await waitForClerk();
+      await Clerk.load();
       isReady = true;
       isLoading = false;
       console.log('✅ Clerk auth initialized');
@@ -116,7 +102,7 @@ const Auth = (function() {
       isLoading = false;
       loadError = err;
       console.error('❌ Clerk failed to load:', err.message);
-      console.warn('💡 Check browser console (F12 > Network tab) to see if ' + CLERK_CDN + ' loaded');
+      console.warn('💡 Clerk script was loaded from https://clerk.com/v5/clerk.js - check the Network tab to verify');
     }
   }
 
