@@ -151,7 +151,8 @@ const Auth = (function() {
   async function signOut() {
     if (!isReady || typeof Clerk === 'undefined') return;
     try {
-      await Clerk.signOut();
+      // Pass redirectUrl to stay on the correct GitHub Pages subdirectory
+      await Clerk.signOut({ redirectUrl: '/promptforge' });
       currentUser = null;
       currentRole = 'free';
       updateUI();
