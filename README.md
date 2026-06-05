@@ -81,11 +81,8 @@ https://YOUR_USERNAME.github.io/prompt-forge
 - In `index.html`, replace `YOURUSERNAME` in the PayPal button with your PayPal.me username
 - When a customer pays, manually send them the prompt pack PDF via email
 
-### 2. **WhatsApp Send Feature** — Free Value That Drives Upgrades
-The built-in "Send via WhatsApp" button lets users send prompts directly to their customers via WhatsApp. This is:
-- **Free users**: Can send prompts (basic functionality)
-- **Premium/Ultimate users**: Unlimited sending + priority
-- This feature makes the tool more useful and encourages upgrades
+### 2. **WhatsApp Messages Category** — Built-in Template
+One of the 8 prompt categories is dedicated to WhatsApp Messages. Users generate ChatGPT prompts for customer outreach, order updates, and promotional broadcasts. This is available for all users and is a key reason customers upgrade to get industry-specific packs.
 
 ### 3. **Build an Email List**
 - Add a "Get 5 Free Prompts" email form (use [ConvertKit](https://convertkit.com) free tier or [Mailchimp](https://mailchimp.com) free tier)

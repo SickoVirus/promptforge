@@ -573,18 +573,6 @@ h3 { font-size: 1.25rem; }
   box-shadow: var(--shadow-glow);
 }
 .btn-copy:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn-whatsapp-send {
-  background: var(--whatsapp);
-  color: var(--white);
-  border: none;
-  white-space: nowrap;
-}
-.btn-whatsapp-send:hover:not(:disabled) {
-  background: var(--whatsapp-dark);
-  box-shadow: 0 4px 14px rgba(37,211,102,0.4);
-  transform: translateY(-1px);
-}
-.btn-whatsapp-send:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn-regenerate {
   background: var(--gray-100);
   color: var(--gray-700);
