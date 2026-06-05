@@ -128,6 +128,84 @@ For each pillar, provide:
 - Hashtag clusters
 
 BONUS: Create 1 "viral bait" Reel script designed to reach new audiences.`
+      ],
+      ultimate: [
+        `You are a TikTok-Instagram hybrid strategist for {businessType}.
+
+Create a MONTHLY REEL CONTENT ENGINE for {product}.
+
+AUDIENCE: {audience}
+VOICE: {tone}
+OBJECTIVE: {goal}
+
+This system produces 12 high-performing Reels per month with minimum effort.
+
+[THE 4 VIDEO TYPES - 3 each per month]
+
+TYPE A - TREND JACK (3/month)
+Current trend + your product = viral potential
+Template: "When [trend] meets [your niche]"
+
+TYPE B - EDUCATIONAL (3/month)
+Teach something valuable
+Template: "Stop doing [X], do [Y] instead"
+
+TYPE C - STORYTELLING (3/month)
+Customer journey or behind-the-scenes
+Template: "How we [achieved result] in [timeframe]"
+
+TYPE D - PROMOTIONAL (3/month)
+Direct value with soft sell
+Template: "We made [product] for people who [pain point]"
+
+For each video type, provide:
+- Hook script (first 3 seconds)
+- Body outline (key points)
+- On-screen text suggestions
+- CTA line
+- Hashtag cluster (5 tags)
+- Sound/music genre suggestion
+
+[BATCH FILMING SCHEDULE]
+How to film all 12 Reels in one 3-hour session.
+
+[CROSS-PLATFORM REPURPOSING]
+How to adapt each Reel for YouTube Shorts and TikTok.`,
+        `You are an Instagram authority-building expert for {businessType}.
+
+Design a 60-DAY INSTAGRAM GROWTH SYSTEM for {product}.
+
+TARGET: {audience}
+VOICE: {tone}
+GOAL: {goal}
+
+[WEEK 1-2: FOUNDATION]
+Day 1-3: Profile optimization strategy
+- Bio hook templates (5 options)
+- Highlight covers structure
+- Content pillar definition
+Day 4-7: 7 posts to establish authority
+- Problem awareness → Solution introduction → Social proof
+
+[WEEK 3-4: ENGAGEMENT]
+- Comment engagement strategy (50 comments/day template)
+- DM outreach sequence (5 messages)
+- Collaboration outreach template
+
+[WEEK 5-6: VIRAL EXPERIMENTS]
+- 5 Reel ideas designed to reach new audiences
+- A/B testing framework (hooks, thumbnails, captions)
+- Algorithm optimization checklist
+
+[WEEK 7-8: MONETIZATION]
+- Content-to-sale funnel mapping
+- Story sequence for launches (12-slide structure)
+- CTA optimization for each content type
+
+[GROWTH TRACKER]
+- Key metrics to track weekly
+- Content audit template (what to keep, kill, tweak)
+- 30-60-90 day milestone targets`
       ]
     },
     product: {
@@ -269,6 +347,78 @@ ACT 3 - THE INVITATION:
 - The CTA (framed as an invitation, not a command)
 
 Add a "Perfect Pairing" suggestion and a gift-wrapping note option.`
+      ],
+      ultimate: [
+        `You are a senior product copywriter for {businessType}.
+
+Write a COMPLETE E-COMMERSE PRODUCT STORY for {product}.
+
+AUDIENCE: {audience}
+TONE: {tone}
+OBJECTIVE: {goal}
+
+[PRODUCT STORY FRAMEWORK]
+1. The origin: Where did this product come from? Why was it created?
+2. The craft: What makes it special? Materials, process, expertise
+3. The transformation: How does life change after using {product}?
+4. The proof: Testimonials, reviews, data
+5. The invitation: Here's how to get it
+
+[EMOTIONAL SELLING POINTS]
+- 3 desires this product fulfills
+- 3 fears it eliminates
+- 3 identities it reinforces
+
+[OBJECTION KILLERS]
+For each common objection, provide:
+- The objection
+- The counter-argument
+- Social proof to back it up
+
+[PRICE ANCHORING STRATEGY]
+- Compare to competitor
+- Show value per use
+- Bundle suggestion to increase perceived value
+
+[COMPLETE COPY PACKAGE]
+- Product title (3 options)
+- Short description (100 chars)
+- Long description (300-500 words)
+- Bullet points (6)
+- SEO metadata (title, description, keywords)
+- Social media caption (3 options)`,
+        `You are an AI-powered product copy strategist for {businessType}.
+
+Create a COMPARISON / VS PAGE for {product} vs top competitors.
+
+TARGET: {audience}
+VOICE: {tone}
+OBJECTIVE: {goal}
+
+[HEAD-TO-HEAD COMPARISON TABLE]
+| Feature | {product} | Competitor A | Competitor B |
+|---------|-----------|-------------|-------------|
+| [feature 1] | ✅ [detail] | ❌ | ⚠️ [partial] |
+| [feature 2] | ✅ [detail] | ✅ [detail] | ❌ |
+
+[BATTLE CARD - Why choose {product}?]
+3 compelling reasons with data/social proof
+
+[SWITCHER'S GUIDE]
+Template for customers coming from competitors:
+"If you're using [Competitor], here's what you'll love about {product}..."
+
+[FAQs THAT SELL]
+5 FAQs framed to highlight competitive advantages
+
+[RETARGETING COPY]
+For visitors who viewed the comparison page but didn't buy:
+- Email sequence (3 emails)
+- Facebook ad copy (3 variants)
+- Push notification (1)
+
+[SUMMARY TABLE]
+Quick-reference decision matrix for comparison shoppers.`
       ]
     },
     whatsapp: {
@@ -380,6 +530,81 @@ OBJECTIVE: {goal}
 - "Come back" offer with expiration
 
 All messages must feel personal, not automated. Maximum 80 words each.`
+      ],
+      ultimate: [
+        `You are a WhatsApp sales funnel expert for {businessType}.
+
+Design a COMPLETE WHATSAPP SALES FUNNEL for {product}.
+
+AUDIENCE: {audience}
+TONE: {tone}
+GOAL: {goal}
+
+[TOP OF FUNNEL - Broadcast Campaign]
+- Awareness message introducing a problem
+- Educational content (value-first)
+- Curiosity hook to click through
+
+[MIDDLE OF FUNNEL - Nurture Sequence]
+- Testimonial/case study message
+- FAQ message addressing top 5 questions
+- Free consultation/strategy call offer
+
+[BOTTOM OF FUNNEL - Conversion]
+- Limited-time offer announcement
+- Scarcity countdown (24 hours)
+- Last chance reminder
+
+[POST-PURCHASE - Retention]
+- Order confirmation with usage tips
+- Check-in message (day 3, 7, 14)
+- Referral request with incentive
+
+[ABANDONED CART RECOVERY]
+- 1-hour follow-up (gentle reminder)
+- 24-hour follow-up (with social proof)
+- 72-hour follow-up (with discount offer)
+
+[ANALYTICS]
+- Key metrics to track per stage
+- A/B testing suggestions for message timing
+- Best sending times based on customer behavior`,
+        `You are a WhatsApp broadcasting compliance and conversion expert for {businessType}.
+
+Create a high-converting WhatsApp broadcast template library for {product}.
+
+AUDIENCE: {audience}
+TONE: {tone}
+OBJECTIVE: {goal}
+
+[BROADCAST TEMPLATES - 10 types]
+1. Monday Motivation (weekly tip)
+2. Wednesday Offer (weekly promotion)
+3. Friday Fun (engagement/game)
+4. New Product Launch
+5. Flash Sale (24-hour urgency)
+6. Customer Win/Testimonial Spotlight
+7. Educational Tip (how to use {product} better)
+8. Event/Webinar Invitation
+9. Holiday/Greeting Message
+10. Re-engagement (dormant customer)
+
+For each template:
+- Character count (keep under 200)
+- Emoji usage guide
+- Personalization hooks
+- CTA options (3 per template)
+- Compliance note (opt-out reminder placement)
+
+[BEST PRACTICES]
+- Optimal send times per day of week
+- Frequency recommendations (max per week)
+- Segmentation tips (how to group customers)
+- A/B testing framework for subject lines
+
+[OPT-OUT MANAGEMENT]
+- Graceful opt-out confirmation message
+- Re-engagement sequence for opt-outs (90 days later)`
       ]
     },
     complaint: {
@@ -486,6 +711,83 @@ After the HEART response, include:
 1. A handwritten note template (for physical products)
 2. A surprise follow-up gift idea
 3. A "How did we do?" survey request (sent 1 week later)`
+      ],
+      ultimate: [
+        `You are a customer experience transformation expert for {businessType}.
+
+Design a PROACTIVE CUSTOMER HAPPINESS SYSTEM for {product}.
+
+AUDIENCE: {audience}
+VOICE: {tone}
+OBJECTIVE: {goal}
+
+Unlike reactive complaint handling, this system PREVENTS complaints.
+
+[PREVENTION TIER]
+1. Onboarding sequence that sets expectations
+2. Usage milestone check-ins (day 1, 7, 30)
+3. Proactive tips to get the most out of {product}
+4. Common pitfalls warning (before they happen)
+
+[DETECTION TIER]
+1. Sentiment monitoring keywords to track
+2. Early warning signal identification
+3. Automated check-in triggered by specific behaviors
+
+[RESOLUTION TIER]
+1. Tiered response templates (minor, moderate, critical)
+2. Empowerment guidelines (what team members can do without approval)
+3. Recovery gift suggestions by issue severity
+
+[LOYALTY RECOVERY TIER]
+1. Post-resolution follow-up sequence
+2. "Win-back" offer timing
+3. Voice of Customer feedback loop
+
+Each tier should include exact message templates and timing.`,
+        `You are a customer service AI training specialist for {businessType}.
+
+Create a COMPLETE CUSTOMER SERVICE PLAYBOOK for {product}.
+
+AUDIENCE: {audience}
+SITUATION: {goal}
+VOICE: {tone}
+
+[SCENARIO-BASED RESPONSE LIBRARY]
+
+Scenario 1: Product didn't arrive on time
+- Empathy statement
+- Investigation commitment
+- Compensation options (2 tiers)
+
+Scenario 2: Product not as expected
+- Validation of disappointment
+- Refund/exchange options
+- Alternative product suggestion
+
+Scenario 3: Billing issue
+- Apologize for inconvenience
+- Steps to resolve
+- Goodwill gesture
+
+Scenario 4: Customer is angry/frustrated
+- De-escalation script
+- Active listening phrases
+- Problem-solving framework
+
+Scenario 5: Customer wants to cancel
+- Retention offers (3 tiers)
+- Feedback collection
+- Graceful exit process
+
+[SCRIPT LIBRARY BY CHANNEL]
+Email templates | Chat scripts | Phone scripts | Social media responses
+
+[ESCALATION PROTOCOL]
+- When to escalate
+- Who to escalate to
+- Time limits per escalation level
+- Follow-up schedule after resolution`
       ]
     },
     promotion: {
@@ -598,6 +900,84 @@ Design a viral referral mechanism where each new customer brings 2+ others. Incl
 
 [BUDGET-FRIENDLY ALTERNATIVES]
 Offer a "no budget" version of each tactic for bootstrapped businesses.`
+      ],
+      ultimate: [
+        `You are a viral growth consultant for {businessType}.
+
+Design a 90-DAY GO-TO-MARKET STRATEGY for {product}.
+
+TARGET: {audience}
+VOICE: {tone}
+OBJECTIVE: {goal}
+
+[MONTH 1 - BUID IT]
+Week 1: Brand & messaging foundation
+Week 2: Content engine setup (10 pieces/week)
+Week 3: Community building (100 engaged followers)
+Week 4: Beta launch with influencers (5 micro-influencers)
+
+[MONTH 2 - LAUNCH IT]
+Week 5: Teaser campaign (countdown)
+Week 6: Launch day (multi-channel blitz)
+Week 7: Social proof amplification
+Week 8: Retargeting & remarketing
+
+[MONTH 3 - SCALE IT]
+Week 9: Paid ads pilot ($500 budget plan)
+Week 10: Partnership/collaboration push
+Week 11: Referral/viral loop activation
+Week 12: Review & optimize
+
+[CHANNEL ALLOCATION]
+- Organic social: 30% of effort
+- Paid ads: 25%
+- Influencer/partnerships: 20%
+- Email/SMS: 15%
+- PR/outreach: 10%
+
+[BUDGET BREAKDOWN]
+How to allocate a $1K, $5K, and $10K monthly budget.
+
+[KEY MILESTONES]
+- 30-day: [metric targets]
+- 60-day: [metric targets]
+- 90-day: [metric targets]`,
+        `You are a conversion rate optimization expert for {businessType}.
+
+Create a FULL PROMOTION CALENDAR for the next 12 months for {product}.
+
+AUDIENCE: {audience}
+TONE: {tone}
+BUSINESS GOAL: {goal}
+
+[MONTH-BY-MONTH PROMOTION PLAN]
+
+January: New Year / Resolution campaign
+February: Valentine's / Customer appreciation
+March: Spring forward / Fresh start
+April: Tax refund / Spring sale
+May: Mother's Day / Pre-summer prep
+June: Summer kickoff / Mid-year sale
+July: Independence Day / Summer special
+August: Back to school / Pre-fall
+September: Fall preview / Labor Day
+October: Halloween / Spooky deals
+November: Black Friday / Cyber Monday prep
+December: Holiday / Year-end clearance
+
+For each month:
+- Promotion name & theme
+- Offer structure (discount %, BOGO, bundle, etc.)
+- Channel focus (which platform to prioritize)
+- Content hooks (3 options)
+- Urgency mechanism
+- Success metric & target
+
+[FLASH SALE BLUEPRINTS]
+- 24-hour flash sale structure
+- 72-hour weekend sale structure
+- 7-day countdown sale structure
+- Each includes: Announcement, Mid-point urgency, Last chance`
       ]
     },
     calendar: {
@@ -732,6 +1112,77 @@ Create a "content bank" structure with categories:
 
 [TEMPLATES]
 Provide 3 caption templates that can be reused with different angles.`
+      ],
+      ultimate: [
+        `You are a content operations director for {businessType}.
+
+Design a FULL YEAR CONTENT STRATEGY (365 days) for {product}.
+
+AUDIENCE: {audience}
+VOICE: {tone}
+GOAL: {goal}
+
+[QUARTER 1 - AWARENESS]
+Theme: "Meet {product}"
+Content mix: 50% educational, 25% entertaining, 15% social proof, 10% promotional
+Key initiatives: Brand awareness campaign, thought leadership series
+
+[QUARTER 2 - ENGAGEMENT]
+Theme: "Your {product} journey"
+Content mix: 35% educational, 30% entertaining, 20% UGC, 15% promotional
+Key initiatives: User-generated content contest, community Q&A series
+
+[QUARTER 3 - CONVERSION]
+Theme: "Why {product} wins"
+Content mix: 30% educational, 20% entertaining, 25% social proof, 25% promotional
+Key initiatives: Comparison series, case study rollout, testimonial campaign
+
+[QUARTER 4 - LOYALTY]
+Theme: "{product} family"
+Content mix: 25% educational, 15% entertaining, 30% community, 30% promotional
+Key initiatives: Holiday campaigns, loyalty program, referral push
+
+[CONTENT REPURPOSING MATRIX]
+How to turn 1 piece of content into 20+ assets:
+1 blog post → 5 social posts → 3 emails → 2 videos → 1 infographic → ...
+
+[CALENDAR TEMPLATE]
+Editable monthly calendar template structure for planning.`,
+        `You are an AI-powered content strategist for {businessType}.
+
+Create a CONTENT AUTOMATION SYSTEM for {product}.
+
+AUDIENCE: {audience}
+TONE: {tone}
+OBJECTIVE: {goal}
+
+[THE SYSTEM: 2 Hours/Day = 30 Pieces/Week]
+
+DAILY ROUTINE:
+Hour 1 - Research & Curation (30 min) + Creation (30 min)
+Hour 2 - Optimization & Scheduling (30 min) + Engagement (30 min)
+
+[CONTENT TYPES BY DAY]
+Monday: Long-form (blog, newsletter, podcast)
+Tuesday: Educational (tips, how-tos, tutorials)
+Wednesday: Social proof (testimonials, case studies)
+Thursday: Engaging (polls, questions, interactive)
+Friday: Promotional (offers, launches, CTAs)
+Saturday: Behind-the-scenes (personal, fun)
+Sunday: Planning & strategy (no publishing)
+
+[REPURPOSING BLUEPRINT]
+- How to turn 1 podcast into 15 pieces of content
+- How to turn 1 blog post into 12 pieces of content
+- How to turn 1 video into 10 pieces of content
+
+[BATCH CREATION TEMPLATES]
+- 1-hour photo shoot plan (20+ images)
+- 1-hour video shoot plan (10+ videos)
+- 30-minute caption writing session (7 days of posts)
+
+[CONTENT SCORECARD]
+How to measure and improve each piece of content.`
       ]
     },
     adcopy: {
@@ -861,7 +1312,100 @@ Body: "Don't miss out" → Recap value → Final CTA
 Day 1: Teaser with link
 Day 3: Offer announcement
 Day 5: Last day reminder`
+      ],
+      ultimate: [
+        `You are a paid media director for {businessType}.
 
+Create a FULL-YEAR PAID ADS STRATEGY for {product}.
+
+CAMPAIGN GOAL: {goal}
+AUDIENCE: {audience}
+VOICE: {tone}
+BUDGET: Monthly budget allocation plan
+
+[Q1 - TEST & LEARN (Jan-Mar)]
+Platform focus: Facebook + Instagram
+Strategy: 5 ad sets with different angles, $50/day total
+Key metric: Cost per click & CTR
+Optimization: Kill underperformers after $200 spend
+
+[Q2 - SCALE WINNERS (Apr-Jun)]
+Platform focus: Winning platforms from Q1 + Google
+Strategy: Scale winning ad sets to $150/day
+Key metric: ROAS & conversion rate
+Optimization: Lookalike audiences from Q1 conversions
+
+[Q3 - EXPAND (Jul-Sep)]
+Platform focus: All winning platforms + TikTok
+Strategy: $300/day total, split across platforms
+Key metric: Blended ROAS
+Optimization: Retargeting sequences
+
+[Q4 - MAXIMIZE (Oct-Dec)]
+Platform focus: Full funnel
+Strategy: $500+/day for holiday season
+Key metric: Revenue & AOV
+Optimization: Holiday-specific creative
+
+[CREATIVE BRIEF TEMPLATES]
+- Video ad script template
+- Static image brief template
+- Carousel ad structure template
+- UGC brief template
+
+[TARGETING PLAYBOOK]
+- Interest targeting suggestions by month
+- Lookalike audience building guide
+- Retargeting window optimization
+- Exclusion strategy to avoid audience fatigue`,
+        `You are a performance marketing analytics expert for {businessType}.
+
+Create a COMPLETE AD ANALYTICS DASHBOARD for {product}.
+
+GOAL: {goal}
+AUDIENCE: {audience}
+TONE: {tone}
+
+[DASHBOARD SECTIONS]
+
+1. ACCOUNT OVERVIEW
+- Total spend, impressions, clicks, conversions
+- Blended ROAS and CPA
+- Week-over-week trend
+
+2. PLATFORM BREAKDOWN
+- Facebook/Instagram metrics
+- Google Ads metrics
+- TikTok Ads metrics
+- Pinterest/LinkedIn (if applicable)
+
+3. CREATIVE ANALYSIS
+- Top 5 creatives by ROAS
+- Creative fatigue detection
+- Hook analysis (first 3 seconds)
+- CTA performance comparison
+
+4. AUDIENCE INSIGHTS
+- Best performing demographics
+- Lookalike performance
+- Retargeting vs prospecting split
+- Audience saturation alerts
+
+5. FUNNEL ANALYSIS
+- TOF: CPM, CTR, frequency
+- MOF: CPC, landing page conversion
+- BOF: CPA, ROAS, AOV
+
+[REPORTING TEMPLATES]
+- Weekly report structure
+- Monthly performance review
+- Quarterly strategy presentation
+
+[OPTIMIZATION RECOMMENDATIONS]
+- Automated rule suggestions
+- Budget reallocation triggers
+- Creative refresh calendar
+- Seasonality adjustment guidelines`
       ]
     },
     tiktok: {
@@ -1015,6 +1559,89 @@ Each video: Problem → {product} solution → CTA
 - Key metrics to track weekly
 - What to optimize after 7, 14, 30 days
 - When to kill underperforming content`
+      ],
+      ultimate: [
+        `You are a TikTok growth hacker for {businessType}.
+
+Create a COMPLETE TIKTOK SHOP / SOCIAL COMMERCE STRATEGY for {product}.
+
+AUDIENCE: {audience}
+VOICE: {tone}
+OBJECTIVE: {goal}
+
+[TIKTOK SHOP SETUP]
+- Product catalog optimization
+- Showcase video requirements
+- Commission structure for affiliates
+- Link-in-bio strategy
+
+[ORGANIC CONTENT ENGINE - 30 Videos/Month]
+
+5 Video Types (6 each):
+1. PRODUCT IN ACTION (demonstrate {product} solving a problem)
+2. EDUCATIONAL (teach something related to your niche)
+3. TREND JACK (adapt trending sounds/formats to your product)
+4. TESTIMONIAL/UGC (customer reviews, unboxings, transformations)
+5. HOOK-ONLY (scroll-stopping opener, link in bio for full story)
+
+For each video type:
+- Script formula (fill in the blank)
+- Hook templates (5 options)
+- Visual direction
+- Sound/music suggestions
+- Caption template with hashtags
+
+[PAID ADS - Spark Ads Strategy]
+How to turn organic winners into paid ads
+- Selection criteria (engagement rate > 15%)
+- Budget allocation ($20/day per video)
+- Scaling strategy (double budget if ROAS > 2.0)
+
+[INFLUENCER MARKETING]
+- How to find micro-influencers in your niche
+- Outreach message template
+- Brief template for sponsorships
+- Performance tracking sheet`,
+        `You are a TikTok live selling expert for {businessType}.
+
+Create a TIKTOK LIVE SELLING PLAYBOOK for {product}.
+
+TARGET: {audience}
+STYLE: {tone}
+GOAL: {goal}
+
+[LIVE SELLING SETUP]
+- Equipment needed (minimum + recommended)
+- Lighting and audio setup guide
+- Background/scene ideas
+- Streaming software recommendations
+
+[PRE-LIVE PREPARATION]
+- 3-day promotional content sequence
+- 1-hour pre-live checklist
+- Product lineup and order
+- Price/offer structure for live exclusives
+
+[LIVE SCRIPT STRUCTURE - 60 min]
+0-5 min: Welcome & what to expect (hook viewers)
+5-15 min: Warm-up engagement (polls, questions, giveaways)
+15-30 min: First product feature (demonstrate, benefits, price)
+30-40 min: Engagement break (comments, Q&A, shoutouts)
+40-50 min: Second product feature (testimonial, comparison)
+50-55 min: Flash offer/urgency (limited-time live discount)
+55-60 min: Closing (CTA, next live date, thanks)
+
+[VIRAL MOMENT STRATEGY]
+How to create shareable moments during your live
+- Surprise giveaways
+- Behind-the-scenes reveals
+- Customer call-ins
+- Transformation demonstrations
+
+[POST-LIVE]
+- Repurpose live clips for content (5 video ideas)
+- Follow-up sequence for viewers who engaged
+- Sales analysis and optimization for next live`
       ]
     }
   };
@@ -1022,6 +1649,192 @@ Each video: Problem → {product} solution → CTA
   // ============================================
   // INDUSTRY-SPECIFIC PROMPT MODIFIERS
   // ============================================
+  // ============================================
+  // MONTHLY PROMPT DROPS (Ultimate only)
+  // ============================================
+  const MONTHLY_DROPS = {
+    month: 'June 2026',
+    theme: 'Summer Growth Sprint',
+    prompts: [
+      {
+        title: '🔥 Summer Sale Hook Generator',
+        text: `Act as a copywriter for {businessType} selling {product}.
+
+Create 10 urgent, scroll-stopping hooks for a SUMMER SALE campaign.
+
+TONE: {tone}
+TARGET: {audience}
+GOAL: {goal}
+
+Each hook should:
+- Be under 10 words
+- Create urgency (limited time, limited stock, seasonal)
+- Appeal to summer emotions (vacation, sunshine, fresh start, freedom)
+- Include a power word
+
+Format as a list with Hook #, the hook text, and why it works.`
+      },
+      {
+        title: '🌴 Summer Content Calendar',
+        text: `Act as a seasonal content strategist for {businessType}.
+
+Create a 4-week SUMMER CONTENT CALENDAR for {product}.
+
+WEEK 1: Summer Kickoff (energetic, fresh start)
+WEEK 2: Mid-Summer Engagement (interactive, fun)
+WEEK 3: Summer Value (educational, tips for summer use)
+WEEK 4: Summer Send-Off (urgency, last chance for summer deals)
+
+TONE: {tone} | AUDIENCE: {audience} | GOAL: {goal}
+
+Include daily post ideas with hooks and CTAs.`
+      },
+      {
+        title: '💬 Summer Customer Outreach',
+        text: `Act as a customer engagement specialist for {businessType}.
+
+Write 5 summer-themed customer outreach messages for {product}.
+
+CHANNEL: WhatsApp + Email + SMS
+TONE: {tone}
+AUDIENCE: {audience}
+GOAL: {goal}
+
+Each message should:
+- Reference summer (heat, vacation, outdoor activities, etc.)
+- Feel seasonal and timely, not generic
+- Include a specific offer or CTA
+- Be under 150 words`
+      },
+      {
+        title: '📸 Instagram Summer Reel Ideas',
+        text: `Act as a seasonal content creator for {businessType}.
+
+Generate 7 SUMMER-THEMED REEL IDEAS for {product}.
+
+TONE: {tone}
+AUDIENCE: {audience}
+GOAL: {goal}
+
+For each reel:
+- Hook (first 3 seconds)
+- Visual concept
+- Sound/music suggestion
+- Caption with hashtags
+- CTA
+
+Focus on summer vibes: outdoor, bright, energetic, vacation-related.`
+      },
+      {
+        title: '🎯 Mid-Year Strategy Review',
+        text: `Act as a business strategy consultant for {businessType}.
+
+Create a MID-YEAR MARKETING AUDIT framework for {product}.
+
+TONE: {tone}
+AUDIENCE: {audience}
+GOAL: {goal}
+
+Include:
+1. What worked in the first half of the year (prompts to analyze)
+2. What needs improvement
+3. Q3 priorities and focus areas
+4. 3 quick wins for the next 30 days
+5. Content gap analysis
+
+Write this as a structured audit that the business owner can fill out.`
+      }
+    ]
+  };
+
+  // ============================================
+  // CHATGPT STRATEGY GUIDE (Ultimate only)
+  // ============================================
+  const STRATEGY_GUIDE_SECTIONS = [
+    {
+      icon: '🎯',
+      title: 'Prompt Engineering Basics',
+      tips: [
+        'Be specific: Instead of "Write a caption", say "Write an Instagram caption for a handmade candle business targeting eco-conscious millennials"',
+        'Set the tone explicitly: Tell ChatGPT the tone before the instruction (Professional, Funny, Urgent, etc.)',
+        'Use role-playing: Start with "Act as a [role]" to get better context-aware responses',
+        'Provide examples: Include a sample of what you want to help ChatGPT match your style'
+      ]
+    },
+    {
+      icon: '⚡',
+      title: 'Power User Techniques',
+      tips: [
+        'Chain prompts: Use the output of one prompt as input for the next (e.g., first generate ideas, then expand the best one)',
+        'Use delimiters: Separate sections with ### or """ to help ChatGPT parse complex requests',
+        'Iterative refinement: Start broad, then narrow down with follow-up prompts like "Make it more urgent" or "Shorten to 50 words"',
+        'Negative instructions: Tell ChatGPT what NOT to do to avoid common mistakes'
+      ]
+    },
+    {
+      icon: '📊',
+      title: 'Business-Specific Strategies',
+      tips: [
+        'A/B testing prompts: Generate 3 variations of the same message and test which performs best',
+        'Customer avatar: Create a detailed customer profile and paste it before each prompt for consistency',
+        'Brand voice document: Write a brand voice guide and ask ChatGPT to follow it for all content',
+        'Content batching: Use PromptForge to generate a week\'s worth of content in one session'
+      ]
+    },
+    {
+      icon: '🚀',
+      title: 'Advanced Growth Tactics',
+      tips: [
+        'Use ChatGPT to analyze your competitors: Paste their content and ask for a gap analysis',
+        'Create content clusters: Generate interconnected content around key topics for SEO benefits',
+        'Repurpose smartly: Take 1 long-form piece and ask ChatGPT to create 10 social media posts from it',
+        'Seasonal planning: Use our monthly drops to stay ahead of seasonal trends and holidays'
+      ]
+    }
+  ];
+
+  // ============================================
+  // VIDEO TUTORIALS (Ultimate only)
+  // ============================================
+  const VIDEO_TUTORIALS = [
+    {
+      title: 'Getting Started with PromptForge',
+      description: 'Learn how to generate your first business prompt, navigate categories, and copy your results.',
+      duration: '5 min',
+      icon: '🚀'
+    },
+    {
+      title: 'Mastering Prompt Categories',
+      description: 'Deep dive into all 8 categories with real-world examples and best practices for each.',
+      duration: '12 min',
+      icon: '📚'
+    },
+    {
+      title: 'Industry Pack Optimization',
+      description: 'How to use industry-specific context to get hyper-relevant prompts for your niche.',
+      duration: '8 min',
+      icon: '🏭'
+    },
+    {
+      title: 'Prompt Refinement Techniques',
+      description: 'Take a good prompt and make it great. Iterative refinement, tone adjustment, and A/B testing.',
+      duration: '10 min',
+      icon: '✨'
+    },
+    {
+      title: 'Content Planning & Strategy',
+      description: 'Use PromptForge to plan 30 days of content in under an hour. Batch creation workflow.',
+      duration: '15 min',
+      icon: '📅'
+    },
+    {
+      title: 'Advanced ChatGPT Integration',
+      description: 'Combine PromptForge outputs with advanced ChatGPT techniques for maximum results.',
+      duration: '10 min',
+      icon: '🤖'
+    }
+  ];
+
   const INDUSTRY_MODIFIERS = {
     general: '',
     ecommerce: `\n\n[INDUSTRY: E-COMMERCE & RETAIL]\nFocus on: Product benefits, conversion optimization, cart recovery, customer reviews, and seasonal promotions. Use urgency and scarcity principles. Highlight free shipping, returns, and guarantees.`,
@@ -1104,6 +1917,7 @@ Each video: Problem → {product} solution → CTA
   let currentPrompt = '';
   let currentFreeTemplateIndex = 0;
   let currentPremiumTemplateIndex = 0;
+  let currentUltimateTemplateIndex = 0;
   let usingPremiumTemplate = false;
   let isCopied = false;
   let currentHistoryView = 'recent';
@@ -1418,15 +2232,23 @@ Each video: Problem → {product} solution → CTA
     if (!categoryData) return;
 
     // Determine which templates to use
-    const canUsePremium = isFeatureUnlocked('premiumTemplates');
+    const canUseUltimate = isFeatureUnlocked('ultimateTemplates');
+    const canUsePremium = canUseUltimate || isFeatureUnlocked('premiumTemplates');
     const freeTemplates = categoryData.free || [];
     const premiumTemplates = categoryData.premium || [];
+    const ultimateTemplates = categoryData.ultimate || [];
 
     let templates;
     let templateType;
 
-    // Premium users: cycle through premium templates first, fall back to free
-    if (canUsePremium && premiumTemplates.length > 0) {
+    // Ultimate users: cycle through ultimate templates first
+    if (canUseUltimate && ultimateTemplates.length > 0) {
+      templates = ultimateTemplates;
+      templateType = 'ultimate';
+      if (currentUltimateTemplateIndex >= templates.length) {
+        currentUltimateTemplateIndex = 0;
+      }
+    } else if (canUsePremium && premiumTemplates.length > 0) {
       templates = premiumTemplates;
       templateType = 'premium';
       if (currentPremiumTemplateIndex >= templates.length) {
@@ -1436,7 +2258,6 @@ Each video: Problem → {product} solution → CTA
       templates = freeTemplates;
       templateType = 'free';
       if (freeTemplates.length === 0) {
-        // Fallback - shouldn't happen
         elements.outputBody.innerHTML = `<div class="output-placeholder"><span class="placeholder-icon">⚠️</span><p>No templates available for this category.</p></div>`;
         return;
       }
@@ -1446,7 +2267,10 @@ Each video: Problem → {product} solution → CTA
     }
 
     let template;
-    if (templateType === 'premium') {
+    if (templateType === 'ultimate') {
+      template = templates[currentUltimateTemplateIndex];
+      currentUltimateTemplateIndex++;
+    } else if (templateType === 'premium') {
       template = templates[currentPremiumTemplateIndex];
       currentPremiumTemplateIndex++;
     } else {
@@ -1494,7 +2318,10 @@ Each video: Problem → {product} solution → CTA
 
     // Update template type badge
     if (elements.templateTypeBadge) {
-      if (templateType === 'premium') {
+      if (templateType === 'ultimate') {
+        elements.templateTypeBadge.textContent = '👑 Ultimate Template';
+        elements.templateTypeBadge.className = 'template-type-badge ultimate';
+      } else if (templateType === 'premium') {
         elements.templateTypeBadge.textContent = '✨ Premium Template';
         elements.templateTypeBadge.className = 'template-type-badge premium';
       } else {
@@ -1520,7 +2347,9 @@ Each video: Problem → {product} solution → CTA
     }, 10);
 
     // Add to history
-    addToHistory(prompt, category, tone, templateType === 'premium');
+      // Add to history with correct template type
+    const histType = templateType === 'ultimate' ? 'ultimate' : (templateType === 'premium' ? 'premium' : 'free');
+    addToHistory(prompt, category, tone, histType === 'premium' || histType === 'ultimate');
   }
 
   // ============================================
@@ -1784,9 +2613,37 @@ Each video: Problem → {product} solution → CTA
     if (e.target === this) closePremiumModal();
   });
 
+  // Strategy guide modal close
+  const guideModalClose = document.getElementById('guideModalClose');
+  if (guideModalClose) guideModalClose.addEventListener('click', () => {
+    const modal = document.getElementById('strategyGuideModal');
+    if (modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close guide modal on overlay click
+  const guideModal = document.getElementById('strategyGuideModal');
+  if (guideModal) {
+    guideModal.addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
   // Close modal on Escape
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closePremiumModal();
+    if (e.key === 'Escape') {
+      closePremiumModal();
+      const guideM = document.getElementById('strategyGuideModal');
+      if (guideM) {
+        guideM.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
   });
 
   // Footer links
@@ -1874,6 +2731,99 @@ Each video: Problem → {product} solution → CTA
   window.__deleteEntry = deleteFromHistory;
 
   // ============================================
+  // ULTIMATE RENDER FUNCTIONS
+  // ============================================
+  function renderMonthlyDrops() {
+    const container = document.getElementById('monthlyDropsContainer');
+    if (!container) return;
+    if (!isFeatureUnlocked('monthlyDrops')) {
+      container.innerHTML = `<div class="history-premium-cta" style="display:block"><p>👑 <strong>Ultimate</strong> — Monthly prompt drops with seasonal campaigns.</p></div>`;
+      return;
+    }
+    container.innerHTML = MONTHLY_DROPS.prompts.map((p, i) => `
+      <div class="drop-card">
+        <div class="drop-card-header">
+          <span class="drop-card-title">${p.title}</span>
+          <span class="badge badge-ultimate">Monthly</span>
+        </div>
+        <div class="drop-card-preview">${p.text.slice(0, 100)}...</div>
+        <button class="btn btn-sm btn-outline use-drop-btn" data-drop-index="${i}">Use Prompt</button>
+      </div>
+    `).join('');
+    container.querySelectorAll('.use-drop-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const idx = parseInt(this.dataset.dropIndex);
+        const drop = MONTHLY_DROPS.prompts[idx];
+        if (drop) {
+          currentPrompt = drop.text;
+          elements.outputBody.innerHTML = '<pre class="output-text">' + escapeHtml(drop.text) + '</pre>';
+          elements.categoryBadge.textContent = 'Monthly Drop';
+          elements.toneBadge.textContent = MONTHLY_DROPS.month;
+          elements.copyBtn.disabled = false;
+          elements.regenerateBtn.disabled = false;
+          elements.favoriteBtn.disabled = false;
+          elements.exportBtn.disabled = false;
+          elements.favoriteBtn.classList.remove('is-fav');
+          currentHistoryId = null;
+          document.getElementById('generator').scrollIntoView({ behavior: 'smooth' });
+          showActionToast('📦 Monthly drop loaded! Fill in the {placeholders} and use it.');
+        }
+      });
+    });
+  }
+
+  function renderTutorials() {
+    const container = document.getElementById('tutorialsContainer');
+    if (!container) return;
+    if (!isFeatureUnlocked('videoTutorials')) {
+      container.innerHTML = `<div class="history-premium-cta" style="display:block"><p>👑 <strong>Ultimate</strong> — 6 video tutorial modules.</p></div>`;
+      return;
+    }
+    container.innerHTML = VIDEO_TUTORIALS.map(t => `
+      <div class="tutorial-card">
+        <div class="tutorial-icon">${t.icon}</div>
+        <div class="tutorial-info">
+          <h4>${t.title}</h4>
+          <p>${t.description}</p>
+          <span class="tutorial-duration">⏱ ${t.duration}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderStrategyGuide() {
+    const container = document.getElementById('guideContainer');
+    if (!container) return;
+    if (!isFeatureUnlocked('strategyGuide')) {
+      container.innerHTML = `<div class="history-premium-cta" style="display:block"><p>👑 <strong>Ultimate</strong> — ChatGPT strategy guide with expert techniques.</p></div>`;
+      return;
+    }
+    container.innerHTML = STRATEGY_GUIDE_SECTIONS.map(s => `
+      <div class="guide-section">
+        <div class="guide-section-header">
+          <span class="guide-icon">${s.icon}</span>
+          <h4>${s.title}</h4>
+        </div>
+        <ul class="guide-tips">
+          ${s.tips.map(t => '<li>' + t + '</li>').join('')}
+        </ul>
+      </div>
+    `).join('');
+  }
+
+  function openStrategyGuide() {
+    if (!isFeatureUnlocked('strategyGuide')) {
+      Auth.requirePremium && Auth.requirePremium('strategyGuide');
+      return;
+    }
+    const modal = document.getElementById('strategyGuideModal');
+    if (modal) {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  // ============================================
   // INIT
   // ============================================
   function init() {
@@ -1900,9 +2850,19 @@ Each video: Problem → {product} solution → CTA
       elements.generateBtn.parentElement.appendChild(shortcutHint);
     }
 
+    // Render ultimate-only sections
+    renderMonthlyDrops();
+    renderTutorials();
+    renderStrategyGuide();
+
+    // Wire up strategy guide button
+    const guideBtn = document.getElementById('openGuideBtn');
+    if (guideBtn) guideBtn.addEventListener('click', openStrategyGuide);
+
     console.log('🚀 PromptForge initialized with premium features');
     console.log('💡 Tip: Use Ctrl+Enter to generate, Ctrl+Shift+C to copy');
     console.log('👑 Premium features: Premium templates, industry packs, history & favorites, PDF export');
+    console.log('👑 Ultimate features: Ultimate templates, monthly drops, strategy guide, video tutorials');
   }
 
   init();

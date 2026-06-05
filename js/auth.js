@@ -271,13 +271,19 @@ const Auth = (function() {
   }
 
   function hasAccess(feature) {
+    // Premium features (available to both Premium and Ultimate)
     if (feature === 'premium') return isPremium();
-    if (feature === 'ultimate') return isUltimate();
     if (feature === 'history') return isPremium();
     if (feature === 'favorites') return isPremium();
     if (feature === 'export') return isPremium();
     if (feature === 'industries') return isPremium();
     if (feature === 'premiumTemplates') return isPremium();
+    // Ultimate-only features
+    if (feature === 'ultimate') return isUltimate();
+    if (feature === 'ultimateTemplates') return isUltimate();
+    if (feature === 'monthlyDrops') return isUltimate();
+    if (feature === 'strategyGuide') return isUltimate();
+    if (feature === 'videoTutorials') return isUltimate();
     return true; // free features are available to everyone
   }
 
