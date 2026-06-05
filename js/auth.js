@@ -47,6 +47,21 @@ const Auth = (function() {
       premiumContent: document.querySelectorAll('.premium-locked')
     };
 
+    // Wait for Clerk SDK to load (it's async)
+    if (typeof Clerk === 'undefined') {
+      console.log('⏳ Waiting for Clerk SDK to load...');
+      await new Promise(resolve => {
+        const check = () => {
+          if (typeof Clerk !== 'undefined') {
+            resolve();
+          } else {
+            setTimeout(check, 100);
+          }
+        };
+        check();
+      });
+    }
+
     // Load Clerk
     try {
       await Clerk.load({ publishableKey: CLERK_PUBLISHABLE_KEY });
@@ -54,6 +69,7 @@ const Auth = (function() {
       console.log('✅ Clerk auth initialized');
     } catch (err) {
       console.error('❌ Clerk failed to load:', err);
+      console.warn('💡 Make sure you added your site domain in Clerk Dashboard → Configure → Paths → Allowed origins. Add: ' + window.location.origin);
       return;
     }
 
