@@ -151,7 +151,7 @@ const Auth = (function() {
   async function signOut() {
     if (!isReady || typeof Clerk === 'undefined') return;
     try {
-      // Clear all Clerk cookies and localStorage
+      // Clear all Clerk cookies so on next load Clerk sees no session
       document.cookie.split(';').forEach(c => {
         const eqPos = c.indexOf('=');
         const name = eqPos > -1 ? c.substr(0, eqPos).trim() : c.trim();
@@ -164,17 +164,9 @@ const Auth = (function() {
           localStorage.removeItem(key);
         }
       }
-
-      // Tell Clerk to clear its internal session state so Sign In works again
-      if (typeof Clerk.setActive === 'function') {
-        await Clerk.setActive({ session: null });
-      }
-
-      currentUser = null;
-      currentRole = 'free';
-      updateUI();
-      notifyListeners();
-      console.log('✅ Signed out');
+      console.log('✅ Signed out — reloading');
+      // Reload so Clerk initializes fresh with no session
+      window.location.reload();
     } catch(e) {
       console.error('Sign out error:', e);
     }
