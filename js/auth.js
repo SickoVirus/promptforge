@@ -10,19 +10,60 @@ const Auth = (function() {
   // CONFIG
   // ============================================
   const CLERK_PUBLISHABLE_KEY = 'pk_test_c3VpdGFibGUtZWdyZXQtNjIuY2xlcmsuYWNjb3VudHMuZGV2JA';
+  const CLERK_CDN = 'https://js.clerk.com/v1/clerk.browser.js';
 
   // ============================================
   // STATE
   // ============================================
   let isReady = false;
+  let isLoading = false;
+  let loadError = null;
   let currentUser = null;
   let currentRole = 'free';
   let authListeners = [];
+  let pendingCalls = [];
 
   // ============================================
-  // DOM REFS (populated on init)
+  // DOM REFS
   // ============================================
   let els = {};
+
+  // ============================================
+  // DYNAMIC SCRIPT LOADER
+  // ============================================
+  function loadClerkScript() {
+    return new Promise((resolve, reject) => {
+      // Check if already loaded
+      if (typeof Clerk !== 'undefined') {
+        resolve();
+        return;
+      }
+
+      // Check if script tag already exists
+      let script = document.querySelector(`script[src="${CLERK_CDN}"]`);
+      if (!script) {
+        script = document.createElement('script');
+        script.src = CLERK_CDN;
+        script.crossOrigin = 'anonymous';
+        script.async = true;
+        document.head.appendChild(script);
+      }
+
+      // Wait for load
+      script.onload = () => {
+        // Clerk SDK takes a moment to initialize after script loads
+        const checkClerk = () => {
+          if (typeof Clerk !== 'undefined') {
+            resolve();
+          } else {
+            setTimeout(checkClerk, 50);
+          }
+        };
+        setTimeout(checkClerk, 100);
+      };
+      script.onerror = () => reject(new Error('Failed to load Clerk SDK from CDN'));
+    });
+  }
 
   // ============================================
   // INIT
@@ -30,47 +71,108 @@ const Auth = (function() {
   async function init() {
     // Cache DOM elements
     els = {
-      // Desktop auth
       authButtons: document.getElementById('authButtons'),
       userMenu: document.getElementById('userMenu'),
       userEmail: document.getElementById('userEmail'),
       userBadge: document.getElementById('userBadge'),
       signOutBtn: document.getElementById('signOutBtn'),
-      // Mobile auth
       authButtonsMobile: document.getElementById('authButtonsMobile'),
       userMenuMobile: document.getElementById('userMenuMobile'),
       userEmailMobile: document.getElementById('userEmailMobile'),
       userBadgeMobile: document.getElementById('userBadgeMobile'),
-      // Shared
       upgradeBanner: document.getElementById('upgradeBanner'),
       upgradeBannerText: document.getElementById('upgradeBannerText'),
       premiumContent: document.querySelectorAll('.premium-locked')
     };
 
-    // Load Clerk (script loads synchronously, so Clerk should be available)
+    isLoading = true;
+
+    // Load Clerk script dynamically
     try {
-      if (typeof Clerk === 'undefined') {
-        throw new Error('Clerk SDK not loaded. Check the CDN URL.');
-      }
+      await loadClerkScript();
       await Clerk.load({ publishableKey: CLERK_PUBLISHABLE_KEY });
       isReady = true;
+      isLoading = false;
       console.log('✅ Clerk auth initialized');
-    } catch (err) {
-      console.error('❌ Clerk failed to load:', err);
-      console.warn('💡 Make sure you added your site domain in Clerk Dashboard → Configure → Paths → Allowed origins. Add: ' + window.location.origin);
-      return;
-    }
 
-    // Listen for auth changes
-    Clerk.addListener(({ user }) => {
-      currentUser = user || null;
+      // Listen for auth changes
+      Clerk.addListener(({ user }) => {
+        currentUser = user || null;
+        updateUI();
+        notifyListeners();
+      });
+
+      // Check initial state
+      currentUser = Clerk.user || null;
+      updateUI();
+
+      // Process any calls that were waiting for Clerk
+      while (pendingCalls.length) {
+        const fn = pendingCalls.shift();
+        try { fn(); } catch(e) { console.warn('Pending call error:', e); }
+      }
+
+    } catch (err) {
+      isLoading = false;
+      loadError = err;
+      console.error('❌ Clerk failed to load:', err.message);
+      console.warn('💡 Check browser console (F12 > Network tab) to see if ' + CLERK_CDN + ' loaded');
+    }
+  }
+
+  // ============================================
+  // SAFE AUTH CALLS
+  // ============================================
+  function safeClerkCall(fn) {
+    if (isReady && typeof Clerk !== 'undefined') {
+      try { fn(); } catch(e) { console.error('Clerk error:', e); }
+    } else if (isLoading) {
+      pendingCalls.push(fn);
+    } else {
+      // Failed or not started - try loading again
+      console.warn('Clerk not ready yet. Try again in a moment.');
+      if (!isLoading && !loadError) {
+        init();
+        pendingCalls.push(fn);
+      }
+    }
+  }
+
+  function openSignIn() {
+    safeClerkCall(() => {
+      Clerk.openSignIn({
+        appearance: {
+          elements: {
+            card: { boxShadow: '0 10px 25px rgba(0,0,0,0.15)' }
+          }
+        }
+      });
+    });
+  }
+
+  function openSignUp() {
+    safeClerkCall(() => {
+      Clerk.openSignUp({
+        appearance: {
+          elements: {
+            card: { boxShadow: '0 10px 25px rgba(0,0,0,0.15)' }
+          }
+        }
+      });
+    });
+  }
+
+  async function signOut() {
+    if (!isReady || typeof Clerk === 'undefined') return;
+    try {
+      await Clerk.signOut();
+      currentUser = null;
+      currentRole = 'free';
       updateUI();
       notifyListeners();
-    });
-
-    // Check initial state
-    currentUser = Clerk.user || null;
-    updateUI();
+    } catch(e) {
+      console.error('Sign out error:', e);
+    }
   }
 
   // ============================================
@@ -79,7 +181,6 @@ const Auth = (function() {
   function updateUI() {
     const isLoggedIn = !!currentUser;
 
-    // Toggle auth buttons vs user menu (desktop + mobile)
     const toggleDisplay = (el, show) => { if (el) el.style.display = show ? 'flex' : 'none'; };
     toggleDisplay(els.authButtons, !isLoggedIn);
     toggleDisplay(els.userMenu, isLoggedIn);
@@ -88,15 +189,11 @@ const Auth = (function() {
 
     if (isLoggedIn && currentUser) {
       const email = currentUser.emailAddresses?.[0]?.emailAddress || currentUser.id || 'User';
-      
-      // Set user email (desktop + mobile)
       if (els.userEmail) els.userEmail.textContent = email;
       if (els.userEmailMobile) els.userEmailMobile.textContent = email;
 
-      // Get user role from publicMetadata, default to 'free'
       currentRole = currentUser.publicMetadata?.role || 'free';
 
-      // Update badge (desktop + mobile)
       const updateBadge = (el) => {
         if (el) {
           el.textContent = currentRole.charAt(0).toUpperCase() + currentRole.slice(1);
@@ -107,7 +204,6 @@ const Auth = (function() {
       updateBadge(els.userBadge);
       updateBadge(els.userBadgeMobile);
 
-      // Show upgrade banner for free users
       if (els.upgradeBanner) {
         if (currentRole === 'free') {
           els.upgradeBanner.classList.add('visible');
@@ -119,7 +215,6 @@ const Auth = (function() {
         }
       }
 
-      // Show/hide premium-locked elements
       els.premiumContent.forEach(el => {
         if (currentRole === 'free') {
           el.classList.add('locked');
@@ -128,7 +223,6 @@ const Auth = (function() {
         }
       });
     } else {
-      // Not logged in - hide upgrade banner, show login prompt
       currentRole = 'free';
       if (els.upgradeBanner) {
         els.upgradeBanner.classList.add('visible');
@@ -140,46 +234,13 @@ const Auth = (function() {
   }
 
   // ============================================
-  // AUTH ACTIONS
-  // ============================================
-  function openSignIn() {
-    Clerk.openSignIn({
-      appearance: {
-        elements: {
-          card: { boxShadow: '0 10px 25px rgba(0,0,0,0.15)' }
-        }
-      }
-    });
-  }
-
-  function openSignUp() {
-    Clerk.openSignUp({
-      appearance: {
-        elements: {
-          card: { boxShadow: '0 10px 25px rgba(0,0,0,0.15)' }
-        }
-      }
-    });
-  }
-
-  async function signOut() {
-    await Clerk.signOut();
-    currentUser = null;
-    currentRole = 'free';
-    updateUI();
-    notifyListeners();
-  }
-
-  // ============================================
   // LISTENER SYSTEM
   // ============================================
   function onAuthChange(callback) {
     authListeners.push(callback);
-    // Immediately call with current state if ready
     if (isReady) {
       callback({ user: currentUser, role: currentRole, isLoggedIn: !!currentUser });
     }
-    // Return unsubscribe function
     return () => {
       authListeners = authListeners.filter(cb => cb !== callback);
     };
