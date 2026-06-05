@@ -47,23 +47,11 @@ const Auth = (function() {
       premiumContent: document.querySelectorAll('.premium-locked')
     };
 
-    // Wait for Clerk SDK to load (it's async)
-    if (typeof Clerk === 'undefined') {
-      console.log('⏳ Waiting for Clerk SDK to load...');
-      await new Promise(resolve => {
-        const check = () => {
-          if (typeof Clerk !== 'undefined') {
-            resolve();
-          } else {
-            setTimeout(check, 100);
-          }
-        };
-        check();
-      });
-    }
-
-    // Load Clerk
+    // Load Clerk (script loads synchronously, so Clerk should be available)
     try {
+      if (typeof Clerk === 'undefined') {
+        throw new Error('Clerk SDK not loaded. Check the CDN URL.');
+      }
       await Clerk.load({ publishableKey: CLERK_PUBLISHABLE_KEY });
       isReady = true;
       console.log('✅ Clerk auth initialized');
