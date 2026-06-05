@@ -151,22 +151,15 @@ const Auth = (function() {
   async function signOut() {
     if (!isReady || typeof Clerk === 'undefined') return;
     try {
-      // Clear all Clerk cookies so on next load Clerk sees no session
-      document.cookie.split(';').forEach(c => {
-        const eqPos = c.indexOf('=');
-        const name = eqPos > -1 ? c.substr(0, eqPos).trim() : c.trim();
-        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/promptforge;';
-      });
-      for (let i = localStorage.length - 1; i >= 0; i--) {
-        const key = localStorage.key(i);
-        if (key && (key.startsWith('clerk') || key.startsWith('__clerk') || key.includes('clerk'))) {
-          localStorage.removeItem(key);
-        }
-      }
-      console.log('✅ Signed out — reloading');
-      // Reload so Clerk initializes fresh with no session
-      window.location.reload();
+      // Use Clerk's built-in signOut with redirect back to /promptforge
+      // This properly revokes the session on the server (via form POST, no CORS)
+      // The redirectUrl keeps us on the correct GitHub Pages subdirectory
+      await Clerk.signOut({ redirectUrl: window.location.pathname });
+      // Code below won't run because Clerk navigates the page
+      currentUser = null;
+      currentRole = 'free';
+      updateUI();
+      notifyListeners();
     } catch(e) {
       console.error('Sign out error:', e);
     }
