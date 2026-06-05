@@ -151,8 +151,22 @@ const Auth = (function() {
   async function signOut() {
     if (!isReady || typeof Clerk === 'undefined') return;
     try {
-      // No redirectUrl param = signs out in-place without navigating away
-      await Clerk.signOut();
+      // Use the underlying Clerk client sessions API to sign out without navigation
+      // This bypasses Clerk's internal navigate() that always redirects to root
+      const session = Clerk.session;
+      if (session?.id) {
+        const token = session.getToken ? await session.getToken() : null;
+        const jwt = token?.jwt || token || '';
+        const apiUrl = 'https://suitable-egret-62.clerk.accounts.dev';
+        await fetch(apiUrl + '/v1/sessions/' + session.id + '/revoke', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + jwt,
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include'
+        });
+      }
       currentUser = null;
       currentRole = 'free';
       updateUI();
