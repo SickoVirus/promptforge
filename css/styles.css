@@ -685,7 +685,7 @@ h3 { font-size: 1.25rem; }
   align-items: center;
   justify-content: center;
   gap: 24px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
 }
 .drops-month, .drops-theme {
@@ -696,10 +696,54 @@ h3 { font-size: 1.25rem; }
   border-radius: 100px;
   border: 1px solid var(--gray-200);
 }
+.drops-trend-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+  border: 1px solid #FCD34D;
+  border-radius: var(--radius-md);
+  flex-wrap: wrap;
+}
+.trend-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #92400E;
+  white-space: nowrap;
+}
+.trend-topics {
+  font-size: 0.85rem;
+  color: #78350F;
+  font-weight: 500;
+}
 .drops-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
+}
+.drops-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--gray-500);
+}
+.drops-loading p {
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  border: 3px solid var(--gray-200);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 .drop-card {
   background: var(--white);
@@ -758,18 +802,43 @@ h3 { font-size: 1.25rem; }
 }
 .tutorial-card:hover {
   border-color: var(--primary);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
-.tutorial-icon {
-  font-size: 2rem;
+.tutorial-thumb {
+  position: relative;
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 80px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--dark-2), var(--gray-700));
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--primary-subtle);
-  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.tutorial-play-btn {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--primary);
+  transition: var(--transition);
+  z-index: 1;
+}
+.tutorial-card:hover .tutorial-play-btn {
+  background: var(--primary);
+  color: var(--white);
+  transform: scale(1.1);
+}
+.tutorial-icon {
+  font-size: 1.5rem;
+  opacity: 0.3;
 }
 .tutorial-info { flex: 1; }
 .tutorial-info h4 {
@@ -784,10 +853,25 @@ h3 { font-size: 1.25rem; }
   line-height: 1.5;
   margin-bottom: 8px;
 }
+.tutorial-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 .tutorial-duration {
   font-size: 0.75rem;
   color: var(--gray-400);
   font-weight: 600;
+}
+.tutorial-badge {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: var(--gray-100);
+  color: var(--gray-500);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
 .guide-section-wrapper {
@@ -834,6 +918,26 @@ h3 { font-size: 1.25rem; }
 }
 .guide-cta { text-align: center; margin-top: 24px; }
 .modal-wide { max-width: 800px !important; }
+.modal-scrollable {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 8px;
+  scroll-behavior: smooth;
+}
+.modal-scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-scrollable::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: 3px;
+}
+.modal-scrollable::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: 3px;
+}
+.modal-scrollable::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}
 
 /* ==========================================
    History Section

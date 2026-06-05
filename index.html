@@ -331,16 +331,20 @@
     <div class="container">
       <div class="section-header">
         <span class="premium-badge">ULTIMATE</span>
-        <h2>Monthly <span class="gradient-text">Prompt Drops</span></h2>
-        <p>New themed prompts every month — seasonal campaigns, trends, and fresh ideas</p>
+        <h2>Weekly <span class="gradient-text">Prompt Drops</span></h2>
+        <p>Auto-updating trending prompts every week — fresh ideas based on current trends</p>
       </div>
       <div class="drops-meta">
-        <span class="drops-month">📅 <span id="dropsMonth">June 2026</span></span>
-        <span class="drops-theme">Theme: <strong id="dropsTheme">Summer Growth Sprint</strong></span>
+        <span class="drops-month">📅 Week of <span id="dropsWeek">this week</span></span>
+        <span class="drops-theme">🌍 <span id="dropsTrendLabel">Trending topics</span></span>
       </div>
-      <div class="drops-grid" id="monthlyDropsContainer">
+      <div class="drops-trend-bar" id="dropsTrendBar" style="display:none">
+        <span class="trend-label">🔥 Auto-detected trends:</span>
+        <span class="trend-topics" id="trendTopics"></span>
+      </div>
+      <div class="drops-grid" id="weeklyDropsContainer">
         <div class="history-premium-cta" style="display:block">
-          <p>👑 <strong>Ultimate</strong> — Monthly prompt drops with seasonal campaigns.</p>
+          <p>👑 <strong>Ultimate</strong> — Weekly prompt drops with auto-updating trending content.</p>
         </div>
       </div>
     </div>
@@ -352,7 +356,7 @@
       <div class="section-header">
         <span class="premium-badge">ULTIMATE</span>
         <h2>Video <span class="gradient-text">Tutorials</span></h2>
-        <p>Step-by-step video guides to master PromptForge and ChatGPT</p>
+        <p>Step-by-step video tutorials to master PromptForge and ChatGPT</p>
       </div>
       <div class="tutorials-grid" id="tutorialsContainer">
         <div class="history-premium-cta" style="display:block">
@@ -389,7 +393,7 @@
         <span class="modal-icon">📖</span>
         <h2>ChatGPT Strategy Guide</h2>
         <p class="modal-desc">Expert techniques to maximize your results</p>
-        <div class="guide-full" id="guideContainerFull"></div>
+        <div class="guide-full modal-scrollable" id="guideContainerFull"></div>
       </div>
     </div>
   </div>
@@ -451,7 +455,7 @@
             <li>&#10003; 250 advanced prompts</li>
             <li>&#10003; Video tutorials (6 modules)</li>
             <li>&#10003; ChatGPT strategy guide</li>
-            <li>&#10003; Monthly prompt drops for 1 year</li>
+            <li>&#10003; Weekly prompt drops with trending topics</li>
             <li>&#10003; Private community access</li>
             <li>&#10003; 1-on-1 onboarding call</li>
           </ul>
@@ -595,7 +599,7 @@
               <li>&#10003; 250 advanced prompts</li>
               <li>&#10003; Video tutorials</li>
               <li>&#10003; ChatGPT strategy guide</li>
-              <li>&#10003; Monthly prompt drops</li>
+              <li>&#10003; Weekly prompt drops</li>
             </ul>
             <div>
               <style>.pp-Q4LSN89J8CZHL{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>

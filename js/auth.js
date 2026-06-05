@@ -281,7 +281,7 @@ const Auth = (function() {
     // Ultimate-only features
     if (feature === 'ultimate') return isUltimate();
     if (feature === 'ultimateTemplates') return isUltimate();
-    if (feature === 'monthlyDrops') return isUltimate();
+    if (feature === 'weeklyDrops') return isUltimate();
     if (feature === 'strategyGuide') return isUltimate();
     if (feature === 'videoTutorials') return isUltimate();
     return true; // free features are available to everyone

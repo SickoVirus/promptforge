@@ -1650,102 +1650,256 @@ How to create shareable moments during your live
   // INDUSTRY-SPECIFIC PROMPT MODIFIERS
   // ============================================
   // ============================================
-  // MONTHLY PROMPT DROPS (Ultimate only)
+  // WEEKLY PROMPT DROPS (Ultimate only)
   // ============================================
-  const MONTHLY_DROPS = {
-    month: 'June 2026',
-    theme: 'Summer Growth Sprint',
-    prompts: [
-      {
-        title: '🔥 Summer Sale Hook Generator',
-        text: `Act as a copywriter for {businessType} selling {product}.
+  // Returns the ISO week number for a given date
+  function getWeekNumber(d) {
+    const dt = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    const dayNum = (dt.getDay() + 6) % 7; // Monday=0
+    dt.setDate(dt.getDate() - dayNum + 3);
+    const firstThursday = dt.valueOf();
+    dt.setMonth(0, 1);
+    if (dt.getDay() !== 4) {
+      dt.setMonth(0, 1 + ((4 - dt.getDay()) + 7) % 7);
+    }
+    return 1 + Math.ceil((firstThursday - dt) / 604800000);
+  }
 
-Create 10 urgent, scroll-stopping hooks for a SUMMER SALE campaign.
+  // Get the current week theme based on ISO week number (cycles through 10 themes)
+  function getCurrentWeekTheme() {
+    const weekNum = getWeekNumber(new Date());
+    const year = new Date().getFullYear();
+    const themes = [
+      { theme: 'Growth & Scaling', emoji: '📈', focus: 'business growth, scaling strategies, expansion tactics' },
+      { theme: 'Engagement Boost', emoji: '🔥', focus: 'audience engagement, community building, interactive content' },
+      { theme: 'Sales & Conversion', emoji: '💰', focus: 'conversion optimization, sales copy, urgency tactics' },
+      { theme: 'Brand Building', emoji: '🏗️', focus: 'brand identity, storytelling, positioning' },
+      { theme: 'Innovation & Trends', emoji: '💡', focus: 'new trends, innovative ideas, cutting-edge tactics' },
+      { theme: 'Customer Love', emoji: '💛', focus: 'customer retention, loyalty programs, appreciation campaigns' },
+      { theme: 'Productivity Hacks', emoji: '⚡', focus: 'efficiency, automation, time-saving strategies' },
+      { theme: 'Creative Campaigns', emoji: '🎨', focus: 'creative marketing, viral ideas, unique campaigns' },
+      { theme: 'Data & Analytics', emoji: '📊', focus: 'data-driven decisions, analytics, measurement' },
+      { theme: 'Seasonal Ready', emoji: '📅', focus: 'seasonal marketing, holiday campaigns, timely content' },
+      { theme: 'Social Media Mastery', emoji: '📱', focus: 'platform-specific strategies, algorithm tips, viral tactics' },
+      { theme: 'Storytelling', emoji: '📖', focus: 'brand stories, customer journeys, narrative marketing' },
+      { theme: 'Email & SMS', emoji: '✉️', focus: 'email marketing, SMS campaigns, newsletter strategies' },
+      { theme: 'Video Content', emoji: '🎬', focus: 'video marketing, Reels, Shorts, live streaming' },
+      { theme: 'Community', emoji: '🤝', focus: 'community building, user-generated content, advocacy' },
+      { theme: 'SEO & Discovery', emoji: '🔍', focus: 'search optimization, discoverability, content strategy' },
+      { theme: 'Influencer Marketing', emoji: '⭐', focus: 'influencer partnerships, collaborations, affiliate marketing' },
+      { theme: 'Launch & Hype', emoji: '🚀', focus: 'product launches, hype building, announcement campaigns' },
+      { theme: 'Retention & Loyalty', emoji: '🔄', focus: 'customer retention, repeat purchases, loyalty loops' },
+      { theme: 'Multi-Channel', emoji: '🌐', focus: 'omni-channel marketing, cross-platform strategy, unified brand' }
+    ];
+    return themes[(weekNum + Math.floor(year * 1.5)) % themes.length];
+  }
+
+  // Build weekly drops with trend-aware prompts
+  function buildWeeklyDrops(trends) {
+    const weekTheme = getCurrentWeekTheme();
+    const trendText = trends && trends.length > 0
+      ? `\n\nConsider these current trending topics in your response: ${trends.slice(0, 5).join(', ')}.`
+      : '';
+
+    return {
+      weekOf: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+      theme: weekTheme.theme,
+      emoji: weekTheme.emoji,
+      focus: weekTheme.focus,
+      trends: trends || [],
+      prompts: [
+        {
+          title: `${weekTheme.emoji} ${weekTheme.theme} Hook Generator`,
+          text: `Act as a copywriter for {businessType} selling {product}.
+
+Create 10 scroll-stopping hooks for a campaign themed around: ${weekTheme.theme}.
 
 TONE: {tone}
 TARGET: {audience}
 GOAL: {goal}
+Focus on: ${weekTheme.focus}.${trendText}
 
 Each hook should:
 - Be under 10 words
-- Create urgency (limited time, limited stock, seasonal)
-- Appeal to summer emotions (vacation, sunshine, fresh start, freedom)
 - Include a power word
+- Appeal to the target audience's emotions
+- Be ready to use in ads, emails, and social media
 
-Format as a list with Hook #, the hook text, and why it works.`
-      },
-      {
-        title: '🌴 Summer Content Calendar',
-        text: `Act as a seasonal content strategist for {businessType}.
+Format as a numbered list with Hook #, the hook text, and why it works.`
+        },
+        {
+          title: `${weekTheme.emoji} ${weekTheme.theme} Content Calendar`,
+          text: `Act as a content strategist for {businessType}.
 
-Create a 4-week SUMMER CONTENT CALENDAR for {product}.
-
-WEEK 1: Summer Kickoff (energetic, fresh start)
-WEEK 2: Mid-Summer Engagement (interactive, fun)
-WEEK 3: Summer Value (educational, tips for summer use)
-WEEK 4: Summer Send-Off (urgency, last chance for summer deals)
-
-TONE: {tone} | AUDIENCE: {audience} | GOAL: {goal}
-
-Include daily post ideas with hooks and CTAs.`
-      },
-      {
-        title: '💬 Summer Customer Outreach',
-        text: `Act as a customer engagement specialist for {businessType}.
-
-Write 5 summer-themed customer outreach messages for {product}.
-
-CHANNEL: WhatsApp + Email + SMS
-TONE: {tone}
-AUDIENCE: {audience}
-GOAL: {goal}
-
-Each message should:
-- Reference summer (heat, vacation, outdoor activities, etc.)
-- Feel seasonal and timely, not generic
-- Include a specific offer or CTA
-- Be under 150 words`
-      },
-      {
-        title: '📸 Instagram Summer Reel Ideas',
-        text: `Act as a seasonal content creator for {businessType}.
-
-Generate 7 SUMMER-THEMED REEL IDEAS for {product}.
+Create a 7-day content calendar for {product} with the theme: ${weekTheme.theme}.
 
 TONE: {tone}
 AUDIENCE: {audience}
 GOAL: {goal}
+Focus on: ${weekTheme.focus}.${trendText}
 
-For each reel:
-- Hook (first 3 seconds)
-- Visual concept
-- Sound/music suggestion
-- Caption with hashtags
+For each day, provide:
+- Content title and format (post, story, reel, email)
+- Hook / first line
+- Key message
 - CTA
+- Platform recommendation
+- 3 hashtags`
+        },
+        {
+          title: `${weekTheme.emoji} ${weekTheme.theme} Campaign Ideas`,
+          text: `Act as a marketing strategist for {businessType}.
 
-Focus on summer vibes: outdoor, bright, energetic, vacation-related.`
-      },
-      {
-        title: '🎯 Mid-Year Strategy Review',
-        text: `Act as a business strategy consultant for {businessType}.
-
-Create a MID-YEAR MARKETING AUDIT framework for {product}.
+Design 3 campaign ideas for {product} themed around: ${weekTheme.theme}.
 
 TONE: {tone}
 AUDIENCE: {audience}
 GOAL: {goal}
+Focus on: ${weekTheme.focus}.${trendText}
+
+For each campaign, include:
+1. Campaign name
+2. Core concept (1 sentence)
+3. Channel mix (which platforms)
+4. Key message
+5. Urgency/offer mechanic
+6. Success metric
+7. Estimated effort (Low/Medium/High)`
+        },
+        {
+          title: `${weekTheme.emoji} ${weekTheme.theme} Social Posts`,
+          text: `Act as a social media manager for {businessType}.
+
+Write 5 social media posts for {product} around the theme: ${weekTheme.theme}.
+
+TONE: {tone}
+TARGET: {audience}
+GOAL: {goal}
+Focus on: ${weekTheme.focus}.${trendText}
+
+For each post, provide:
+- Platform (Instagram, TikTok, LinkedIn, Facebook, Twitter/X)
+- Hook (first 2 lines)
+- Body (3-4 sentences)
+- Visual suggestion
+- 5 hashtags
+- CTA`
+        },
+        {
+          title: `${weekTheme.emoji} ${weekTheme.theme} Strategy Guide`,
+          text: `Act as a business consultant for {businessType}.
+
+Create a mini-strategy guide for {product} focused on: ${weekTheme.theme}.
+
+TONE: {tone}
+AUDIENCE: {audience}
+GOAL: {goal}
+Focus area: ${weekTheme.focus}.${trendText}
 
 Include:
-1. What worked in the first half of the year (prompts to analyze)
-2. What needs improvement
-3. Q3 priorities and focus areas
-4. 3 quick wins for the next 30 days
-5. Content gap analysis
+1. Quick wins (3 things to do this week)
+2. Medium-term strategy (what to build over 30 days)
+3. Long-term vision (90-day roadmap)
+4. Key metrics to track
+5. Common pitfalls to avoid
+6. Tools and resources recommendation`
+        }
+      ]
+    };
+  }
 
-Write this as a structured audit that the business owner can fill out.`
+  let currentWeeklyDrops = null;
+
+  // ============================================
+  // TRENDING TOPICS FETCHER
+  // ============================================
+  // Try to fetch trending topics from free APIs
+  // Falls back to curated content if unavailable
+  const TRENDING_CACHE_KEY = 'promptforge_trending_cache';
+  const DROPS_CACHE_KEY = 'promptforge_weekly_drops';
+
+  async function fetchTrendingTopics() {
+    // Check cache (valid for 6 hours)
+    try {
+      const cached = localStorage.getItem(TRENDING_CACHE_KEY);
+      if (cached) {
+        const { data, timestamp } = JSON.parse(cached);
+        if (Date.now() - timestamp < 6 * 60 * 60 * 1000) {
+          return data;
+        }
       }
-    ]
-  };
+    } catch(e) { /* ignore */ }
+
+    // Try GNews API (user can set their API key)
+    const apiKey = localStorage.getItem('gnews_api_key');
+    if (apiKey) {
+      try {
+        const url = `https://gnews.io/api/v4/top-headlines?lang=en&country=us&max=5&apikey=${apiKey}`;
+        const resp = await fetch(url);
+        if (resp.ok) {
+          const json = await resp.json();
+          const topics = json.articles?.map(a => a.title?.split(' - ')[0]?.trim()).filter(Boolean) || [];
+          if (topics.length > 0) {
+            const data = { source: 'GNews', topics };
+            localStorage.setItem(TRENDING_CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }));
+            return data;
+          }
+        }
+      } catch(e) {
+        console.warn('GNews fetch failed:', e.message);
+      }
+    }
+
+    // Try Reddit public JSON (may be CORS-restricted on some origins)
+    try {
+      const resp = await fetch('https://www.reddit.com/r/all/hot.json?limit=10', {
+        headers: { 'Accept': 'application/json' }
+      });
+      if (resp.ok) {
+        const json = await resp.json();
+        const topics = json.data?.children?.map(c => c.data?.title).filter(Boolean) || [];
+        if (topics.length > 0) {
+          const data = { source: 'Reddit', topics: topics.slice(0, 8) };
+          localStorage.setItem(TRENDING_CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }));
+          return data;
+        }
+      }
+    } catch(e) {
+      console.warn('Reddit fetch failed:', e.message);
+    }
+
+    return null;
+  }
+
+  async function updateWeeklyDrops() {
+    // Check if we already have drops for this week
+    const weekNum = getWeekNumber(new Date());
+    try {
+      const cached = localStorage.getItem(DROPS_CACHE_KEY);
+      if (cached) {
+        const { drops, week } = JSON.parse(cached);
+        if (week === weekNum) {
+          currentWeeklyDrops = drops;
+          return drops;
+        }
+      }
+    } catch(e) { /* ignore */ }
+
+    // Fetch trending topics
+    const trendData = await fetchTrendingTopics();
+    const trends = trendData?.topics || [];
+
+    // Build drops
+    const drops = buildWeeklyDrops(trends);
+    currentWeeklyDrops = drops;
+
+    // Cache for this week
+    try {
+      localStorage.setItem(DROPS_CACHE_KEY, JSON.stringify({ drops, week: weekNum }));
+    } catch(e) { /* ignore */ }
+
+    return drops;
+  }
 
   // ============================================
   // CHATGPT STRATEGY GUIDE (Ultimate only)
@@ -2734,38 +2888,65 @@ Write this as a structured audit that the business owner can fill out.`
   // ============================================
   // ULTIMATE RENDER FUNCTIONS
   // ============================================
-  function renderMonthlyDrops() {
-    // Update month/theme from data
-    const monthEl = document.getElementById('dropsMonth');
-    const themeEl = document.getElementById('dropsTheme');
-    if (monthEl) monthEl.textContent = MONTHLY_DROPS.month;
-    if (themeEl) themeEl.textContent = MONTHLY_DROPS.theme;
-
-    const container = document.getElementById('monthlyDropsContainer');
+  async function renderWeeklyDrops() {
+    const weekEl = document.getElementById('dropsWeek');
+    const trendLabel = document.getElementById('dropsTrendLabel');
+    const trendTopics = document.getElementById('trendTopics');
+    const trendBar = document.getElementById('dropsTrendBar');
+    const container = document.getElementById('weeklyDropsContainer');
     if (!container) return;
-    if (!isFeatureUnlocked('monthlyDrops')) {
-      container.innerHTML = `<div class="history-premium-cta" style="display:block"><p>👑 <strong>Ultimate</strong> — Monthly prompt drops with seasonal campaigns.</p></div>`;
+
+    if (!isFeatureUnlocked('weeklyDrops')) {
+      container.innerHTML = `<div class="history-premium-cta" style="display:block"><p>👑 <strong>Ultimate</strong> — Weekly prompt drops with auto-updating trending content.</p></div>`;
+      // Hide trend bar for non-ultimate users
+      if (trendBar) trendBar.style.display = 'none';
       return;
     }
-    container.innerHTML = MONTHLY_DROPS.prompts.map((p, i) => `
+
+    // Show trend bar for ultimate users
+    if (trendBar) trendBar.style.display = 'flex';
+
+    // Show loading state
+    container.innerHTML = `<div class="drops-loading">
+      <div class="loading-spinner"></div>
+      <p>Loading this week's trending prompts...</p>
+    </div>`;
+
+    // Fetch/refresh drops
+    const drops = await updateWeeklyDrops();
+    if (!drops) return;
+
+    // Update header
+    if (weekEl) weekEl.textContent = drops.weekOf;
+    if (trendLabel) trendLabel.textContent = `${drops.emoji} ${drops.theme}`;
+
+    // Update trend topics bar
+    if (trendTopics) {
+      trendTopics.textContent = drops.trends.length > 0
+        ? drops.trends.join(' • ')
+        : drops.theme + ' — ' + drops.focus;
+    }
+
+    container.innerHTML = drops.prompts.map((p, i) => `
       <div class="drop-card">
         <div class="drop-card-header">
           <span class="drop-card-title">${p.title}</span>
-          <span class="badge badge-ultimate">Monthly</span>
+          <span class="badge badge-ultimate">Week ${getWeekNumber(new Date())}</span>
         </div>
         <div class="drop-card-preview">${p.text.slice(0, 100)}...</div>
         <button class="btn btn-sm btn-outline use-drop-btn" data-drop-index="${i}">Use Prompt</button>
       </div>
     `).join('');
+
     container.querySelectorAll('.use-drop-btn').forEach(btn => {
       btn.addEventListener('click', function() {
         const idx = parseInt(this.dataset.dropIndex);
-        const drop = MONTHLY_DROPS.prompts[idx];
+        const drop = drops.prompts[idx];
         if (drop) {
           currentPrompt = drop.text;
           elements.outputBody.innerHTML = '<pre class="output-text">' + escapeHtml(drop.text) + '</pre>';
-          elements.categoryBadge.textContent = 'Monthly Drop';
-          elements.toneBadge.textContent = MONTHLY_DROPS.month;
+          elements.categoryBadge.textContent = 'Weekly Drop';
+          elements.toneBadge.textContent = drops.theme;
           elements.copyBtn.disabled = false;
           elements.regenerateBtn.disabled = false;
           elements.favoriteBtn.disabled = false;
@@ -2773,7 +2954,7 @@ Write this as a structured audit that the business owner can fill out.`
           elements.favoriteBtn.classList.remove('is-fav');
           currentHistoryId = null;
           document.getElementById('generator').scrollIntoView({ behavior: 'smooth' });
-          showActionToast('📦 Monthly drop loaded! Fill in the {placeholders} and use it.');
+          showActionToast('📦 Weekly drop loaded! Fill in the {placeholders} and use it.');
         }
       });
     });
@@ -2788,11 +2969,17 @@ Write this as a structured audit that the business owner can fill out.`
     }
     container.innerHTML = VIDEO_TUTORIALS.map(t => `
       <div class="tutorial-card">
-        <div class="tutorial-icon">${t.icon}</div>
+        <div class="tutorial-thumb">
+          <div class="tutorial-play-btn">▶</div>
+          <div class="tutorial-icon">${t.icon}</div>
+        </div>
         <div class="tutorial-info">
           <h4>${t.title}</h4>
           <p>${t.description}</p>
-          <span class="tutorial-duration">⏱ ${t.duration}</span>
+          <div class="tutorial-meta">
+            <span class="tutorial-duration">⏱ ${t.duration}</span>
+            <span class="tutorial-badge">Coming Soon</span>
+          </div>
         </div>
       </div>
     `).join('');
@@ -2840,6 +3027,8 @@ Write this as a structured audit that the business owner can fill out.`
     }
     const modal = document.getElementById('strategyGuideModal');
     if (modal) {
+      // Reset scroll position to top so user starts from the beginning
+      if (fullContainer) fullContainer.scrollTop = 0;
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -2873,7 +3062,7 @@ Write this as a structured audit that the business owner can fill out.`
     }
 
     // Render ultimate-only sections
-    renderMonthlyDrops();
+    renderWeeklyDrops();
     renderTutorials();
     renderStrategyGuide();
 
@@ -2884,7 +3073,7 @@ Write this as a structured audit that the business owner can fill out.`
     console.log('🚀 PromptForge initialized with premium features');
     console.log('💡 Tip: Use Ctrl+Enter to generate, Ctrl+Shift+C to copy');
     console.log('👑 Premium features: Premium templates, industry packs, history & favorites, PDF export');
-    console.log('👑 Ultimate features: Ultimate templates, monthly drops, strategy guide, video tutorials');
+    console.log('👑 Ultimate features: Ultimate templates, weekly drops (auto-trending), strategy guide, video tutorials');
   }
 
   init();
