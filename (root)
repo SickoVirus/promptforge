@@ -1,0 +1,7 @@
+// bash
+git init
+git add .
+git commit "Initial commit"
+git branch -M main
+git remote add origin https://github.com/SickoVirus/Test.git
+git push -u origin main
