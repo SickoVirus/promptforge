@@ -10,7 +10,7 @@ const Auth = (function() {
   // CONFIG
   // ============================================
   const CLERK_PUBLISHABLE_KEY = 'pk_test_c3VpdGFibGUtZWdyZXQtNjIuY2xlcmsuYWNjb3VudHMuZGV2JA';
-  const CLERK_CDN = 'https://js.clerk.com/v1/clerk.browser.js';
+  const CLERK_CDN = 'https://unpkg.com/@clerk/clerk-js@5/dist/clerk.browser.js';
 
   // ============================================
   // STATE
