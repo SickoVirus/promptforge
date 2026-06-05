@@ -2052,13 +2052,14 @@ Write this as a structured audit that the business owner can fill out.`
     }
   }
 
-  function addToHistory(prompt, category, tone, isPremium) {
+  function addToHistory(prompt, category, tone, isPremium, isUltimate) {
     const entry = {
       id: generateId(),
       prompt,
       category,
       tone,
       isPremium: !!isPremium,
+      isUltimate: !!isUltimate,
       timestamp: Date.now()
     };
     promptHistory.push(entry);
@@ -2178,7 +2179,7 @@ Write this as a structured audit that the business owner can fill out.`
               <span>${entry.tone}</span>
               <span>•</span>
               <span>${formatDate(entry.timestamp)}</span>
-              ${entry.isPremium ? '<span class="user-badge badge-premium" style="font-size:0.6rem">Premium</span>' : ''}
+              ${entry.isUltimate ? '<span class="user-badge badge-ultimate" style="font-size:0.6rem">Ultimate</span>' : entry.isPremium ? '<span class="user-badge badge-premium" style="font-size:0.6rem">Premium</span>' : ''}
             </div>
           </div>
           <div class="history-item-actions">
@@ -2349,7 +2350,7 @@ Write this as a structured audit that the business owner can fill out.`
     // Add to history
       // Add to history with correct template type
     const histType = templateType === 'ultimate' ? 'ultimate' : (templateType === 'premium' ? 'premium' : 'free');
-    addToHistory(prompt, category, tone, histType === 'premium' || histType === 'ultimate');
+    addToHistory(prompt, category, tone, histType === 'premium', histType === 'ultimate');
   }
 
   // ============================================
@@ -2734,6 +2735,12 @@ Write this as a structured audit that the business owner can fill out.`
   // ULTIMATE RENDER FUNCTIONS
   // ============================================
   function renderMonthlyDrops() {
+    // Update month/theme from data
+    const monthEl = document.getElementById('dropsMonth');
+    const themeEl = document.getElementById('dropsTheme');
+    if (monthEl) monthEl.textContent = MONTHLY_DROPS.month;
+    if (themeEl) themeEl.textContent = MONTHLY_DROPS.theme;
+
     const container = document.getElementById('monthlyDropsContainer');
     if (!container) return;
     if (!isFeatureUnlocked('monthlyDrops')) {
@@ -2815,6 +2822,21 @@ Write this as a structured audit that the business owner can fill out.`
     if (!isFeatureUnlocked('strategyGuide')) {
       Auth.requirePremium && Auth.requirePremium('strategyGuide');
       return;
+    }
+    // Render content into modal
+    const fullContainer = document.getElementById('guideContainerFull');
+    if (fullContainer) {
+      fullContainer.innerHTML = STRATEGY_GUIDE_SECTIONS.map(s => `
+        <div class="guide-section">
+          <div class="guide-section-header">
+            <span class="guide-icon">${s.icon}</span>
+            <h4>${s.title}</h4>
+          </div>
+          <ul class="guide-tips">
+            ${s.tips.map(t => '<li>' + t + '</li>').join('')}
+          </ul>
+        </div>
+      `).join('');
     }
     const modal = document.getElementById('strategyGuideModal');
     if (modal) {
