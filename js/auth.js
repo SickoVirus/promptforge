@@ -151,12 +151,8 @@ const Auth = (function() {
   async function signOut() {
     if (!isReady || typeof Clerk === 'undefined') return;
     try {
-      // Revoke the current session directly to avoid Clerk's built-in redirect
-      if (Clerk.session) {
-        await Clerk.session.revoke();
-      } else {
-        await Clerk.signOut();
-      }
+      // No redirectUrl param = signs out in-place without navigating away
+      await Clerk.signOut();
       currentUser = null;
       currentRole = 'free';
       updateUI();
