@@ -2888,33 +2888,12 @@ Include:
   // ============================================
   // ULTIMATE RENDER FUNCTIONS
   // ============================================
-  async function renderWeeklyDrops() {
+  function renderWeeklyDropCards(drops) {
     const weekEl = document.getElementById('dropsWeek');
     const trendLabel = document.getElementById('dropsTrendLabel');
     const trendTopics = document.getElementById('trendTopics');
-    const trendBar = document.getElementById('dropsTrendBar');
     const container = document.getElementById('weeklyDropsContainer');
-    if (!container) return;
-
-    if (!isFeatureUnlocked('weeklyDrops')) {
-      container.innerHTML = `<div class="history-premium-cta" style="display:block"><p>👑 <strong>Ultimate</strong> — Weekly prompt drops with auto-updating trending content.</p></div>`;
-      // Hide trend bar for non-ultimate users
-      if (trendBar) trendBar.style.display = 'none';
-      return;
-    }
-
-    // Show trend bar for ultimate users
-    if (trendBar) trendBar.style.display = 'flex';
-
-    // Show loading state
-    container.innerHTML = `<div class="drops-loading">
-      <div class="loading-spinner"></div>
-      <p>Loading this week's trending prompts...</p>
-    </div>`;
-
-    // Fetch/refresh drops
-    const drops = await updateWeeklyDrops();
-    if (!drops) return;
+    if (!container || !drops) return;
 
     // Update header
     if (weekEl) weekEl.textContent = drops.weekOf;
@@ -2922,18 +2901,19 @@ Include:
 
     // Update trend topics bar
     if (trendTopics) {
-      trendTopics.textContent = drops.trends.length > 0
+      trendTopics.textContent = drops.trends && drops.trends.length > 0
         ? drops.trends.join(' • ')
         : drops.theme + ' — ' + drops.focus;
     }
 
+    // Render cards
     container.innerHTML = drops.prompts.map((p, i) => `
       <div class="drop-card">
         <div class="drop-card-header">
           <span class="drop-card-title">${p.title}</span>
           <span class="badge badge-ultimate">Week ${getWeekNumber(new Date())}</span>
         </div>
-        <div class="drop-card-preview">${p.text.slice(0, 100)}...</div>
+        <div class="drop-card-preview">${escapeHtml(p.text.slice(0, 100))}...</div>
         <button class="btn btn-sm btn-outline use-drop-btn" data-drop-index="${i}">Use Prompt</button>
       </div>
     `).join('');
@@ -2957,6 +2937,34 @@ Include:
           showActionToast('📦 Weekly drop loaded! Fill in the {placeholders} and use it.');
         }
       });
+    });
+  }
+
+  function renderWeeklyDrops() {
+    const trendBar = document.getElementById('dropsTrendBar');
+    const container = document.getElementById('weeklyDropsContainer');
+    if (!container) return;
+
+    if (!isFeatureUnlocked('weeklyDrops')) {
+      container.innerHTML = `<div class="history-premium-cta" style="display:block"><p>👑 <strong>Ultimate</strong> — Weekly prompt drops with auto-updating trending content.</p></div>`;
+      if (trendBar) trendBar.style.display = 'none';
+      return;
+    }
+
+    // Show trend bar for ultimate users
+    if (trendBar) trendBar.style.display = 'flex';
+
+    // STEP 1: Render themed content IMMEDIATELY (synchronous, no loading state)
+    const initialDrops = buildWeeklyDrops([]);
+    renderWeeklyDropCards(initialDrops);
+
+    // STEP 2: Try to fetch trends asynchronously and update if successful
+    updateWeeklyDrops().then(drops => {
+      if (drops) {
+        renderWeeklyDropCards(drops);
+      }
+    }).catch(function(err) {
+      console.warn('Trend fetch failed, keeping initial content:', err.message);
     });
   }
 
