@@ -75,47 +75,34 @@ https://YOUR_USERNAME.github.io/prompt-forge
 
 ## 💰 Monetization Ideas
 
-### 1. **Gumroad** — Sell the Premium Prompt Pack
-- Create a product on [Gumroad](https://gumroad.com) (free to set up)
-- Price: **$19** for 100 advanced prompts
-- Upload a PDF with all prompts organized by industry
-- Add the Gumroad purchase link to the modal buttons in `app.js`
-- Gumroad handles payments, delivery, and tax automatically
+### 1. **PayPal** — Receive Payment Directly (Main Channel)
+- Create a [PayPal.me](https://paypal.me) link (free to set up)
+- Price: **$4.99** for Premium Pack, **$9.95** for Ultimate Bundle
+- In `index.html`, replace `YOURUSERNAME` in the PayPal button with your PayPal.me username
+- When a customer pays, manually send them the prompt pack PDF via email
 
-**Pro tip**: Create a $39 "Ultimate Bundle" with prompts + video tutorials
+### 2. **WhatsApp Send Feature** — Free Value That Drives Upgrades
+The built-in "Send via WhatsApp" button lets users send prompts directly to their customers via WhatsApp. This is:
+- **Free users**: Can send prompts (basic functionality)
+- **Premium/Ultimate users**: Unlimited sending + priority
+- This feature makes the tool more useful and encourages upgrades
 
-### 2. **Ko-fi** — Accept Support & Sell
-- Create a page on [Ko-fi](https://ko-fi.com)
-- Set up a "Shop" item for the Premium Pack
-- Link it from the Ko-fi buttons in the site
-- Ko-fi has 0% fees on memberships and low fees on shop items
-
-### 3. **WhatsApp Direct Sales**
-- Get a WhatsApp Business number
-- Update the WhatsApp link in `app.js` with your number
-- When customers reach out, accept payment via:
-  - **MPesa** (popular in Africa)
-  - **UPI / Google Pay** (popular in India)
-  - **Bank transfer** (anywhere)
-  - **PayPal / Venmo** (US/Europe)
-- Send the PDF directly via WhatsApp after payment confirmation
-
-### 4. **Build an Email List**
+### 3. **Build an Email List**
 - Add a "Get 5 Free Prompts" email form (use [ConvertKit](https://convertkit.com) free tier or [Mailchimp](https://mailchimp.com) free tier)
 - Send weekly tips to build trust
 - Promote the Premium Pack to your list
 - **Referral**: Create an affiliate program — give 30% commission for each sale
 
-### 5. **Price Anchoring Strategy**
-On the pricing section, the $0 → $19 → $39 structure makes the $19 option feel like the "smart choice." This is intentional psychological pricing.
+### 4. **Price Anchoring Strategy**
+On the pricing section, the $0 → $4.99 → $9.95 structure makes the $4.99 option feel like the "smart choice." This is intentional psychological pricing.
 
-### 6. **Partnerships**
+### 5. **Partnerships**
 Partner with:
 - **Social media managers** who can recommend your tool to their clients
 - **Small business groups** on Facebook / LinkedIn
 - **Local business associations** (chamber of commerce, BNI groups)
 
-### 7. **Content Marketing**
+### 6. **Content Marketing**
 Create free content that drives traffic:
 - "10 ChatGPT Prompts Every Bakery Owner Needs"
 - "How to Write Product Descriptions with AI"
@@ -138,10 +125,9 @@ email: {
 Then add the option to the `<select>` in `index.html` and a new category card.
 
 ### Changing the Premium Links
-Update the URL placeholders in the premium modal and buttons:
-- Search for `gumroad.com` and replace with your Gumroad product link
-- Search for `ko-fi.com` and replace with your Ko-fi page
-- Search for `whatsappBtn` in `app.js` to set your WhatsApp number
+Update the URL placeholders in the premium modal:
+- Search for `paypal.me/YOURUSERNAME` in `index.html` and replace with your PayPal.me link
+- The only payment method is PayPal — no other payment links exist
 
 ---
 

@@ -23,8 +23,29 @@
         <li><a href="#categories">Categories</a></li>
         <li><a href="#premium">Premium</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li class="nav-auth-mobile" id="navAuthMobile">
+          <div class="auth-buttons" id="authButtonsMobile">
+            <button class="btn btn-outline btn-sm" onclick="Auth.openSignIn()">Sign In</button>
+            <button class="btn btn-primary btn-sm" onclick="Auth.openSignUp()">Sign Up</button>
+          </div>
+          <div class="user-menu" id="userMenuMobile" style="display:none">
+            <span class="user-email" id="userEmailMobile">user@email.com</span>
+            <span class="user-badge" id="userBadgeMobile">Free</span>
+            <button class="btn btn-sm btn-ghost" onclick="Auth.signOut()">Sign Out</button>
+          </div>
+        </li>
       </ul>
-      <a href="#premium" class="btn btn-accent nav-cta">Get Premium</a>
+      <div class="nav-auth">
+        <div class="auth-buttons" id="authButtons">
+          <button class="btn btn-outline btn-sm" id="signInBtn">Sign In</button>
+          <button class="btn btn-primary btn-sm" id="signUpBtn">Sign Up</button>
+        </div>
+        <div class="user-menu" id="userMenu" style="display:none">
+          <span class="user-email" id="userEmail">user@email.com</span>
+          <span class="user-badge" id="userBadge">Free</span>
+          <button class="btn btn-sm btn-ghost" id="signOutBtn">Sign Out</button>
+        </div>
+      </div>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -136,9 +157,14 @@
       <div class="section-header">
         <h2>Build Your <span class="gradient-text">Perfect Prompt</span></h2>
         <p>Fill in the details below and we'll craft a ready-to-use ChatGPT prompt for you</p>
-      </div>
+      </div>          <!-- Upgrade Banner -->
+          <div class="upgrade-banner" id="upgradeBanner">
+            <span class="upgrade-banner-icon">&#128161;</span>
+            <span class="upgrade-banner-text" id="upgradeBannerText">Sign in to track your prompts and unlock premium features!</span>
+            <a href="#premium" class="btn btn-accent btn-sm">Upgrade Now</a>
+          </div>
 
-      <div class="generator-layout">
+          <div class="generator-layout">
         <div class="generator-form">
           <div class="form-group">
             <label for="category">Prompt Category</label>
@@ -219,6 +245,10 @@
               <span class="copy-icon">&#128203;</span>
               <span class="copy-text">Copy to Clipboard</span>
             </button>
+            <button class="btn btn-whatsapp-send" id="whatsappSendBtn" disabled>
+              <span>&#128172;</span>
+              <span>Send via WhatsApp</span>
+            </button>
             <button class="btn btn-regenerate" id="regenerateBtn" disabled>
               &#128260; Regenerate
             </button>
@@ -260,46 +290,47 @@
           <div class="pricing-badge">Best Value</div>
           <div class="pricing-header">
             <h3>Premium Pack</h3>
-            <div class="price"><span class="currency">$</span>19</div>
+            <div class="price"><span class="currency">$</span>4.99</div>
             <p>One-time payment &middot; Lifetime access</p>
           </div>
           <ul class="pricing-features">
             <li>&#10003; Everything in Free</li>
             <li>&#10003; 100 advanced, pre-written prompts</li>
             <li>&#10003; Industry-specific packs (12 industries)</li>
+            <li>&#10003; Send prompts via WhatsApp to customers</li>
             <li>&#10003; Seasonal campaign templates</li>
             <li>&#10003; A/B testing prompt variants</li>
             <li>&#10003; Editable PDF workbook</li>
             <li>&#10003; Lifetime updates</li>
           </ul>
-          <button class="btn btn-primary pricing-btn" id="buyPremiumBtn">Buy Now - $19</button>
+          <button class="btn btn-primary pricing-btn" id="buyPremiumBtn">Buy Now - $4.99</button>
         </div>
 
         <div class="pricing-card bundle-card">
           <div class="pricing-header">
             <h3>Ultimate Bundle</h3>
-            <div class="price"><span class="currency">$</span>39</div>
+            <div class="price"><span class="currency">$</span>9.95</div>
             <p>One-time payment &middot; Lifetime access</p>
           </div>
           <ul class="pricing-features">
             <li>&#10003; Everything in Premium Pack</li>
             <li>&#10003; 250 advanced prompts</li>
+            <li>&#10003; Unlimited WhatsApp prompt sending</li>
             <li>&#10003; Video tutorials (6 modules)</li>
             <li>&#10003; ChatGPT strategy guide</li>
             <li>&#10003; Monthly prompt drops for 1 year</li>
             <li>&#10003; Private community access</li>
             <li>&#10003; 1-on-1 onboarding call</li>
           </ul>
-          <button class="btn btn-accent pricing-btn" id="buyBundleBtn">Buy Now - $39</button>
+          <button class="btn btn-accent pricing-btn" id="buyBundleBtn">Buy Now - $9.95</button>
         </div>
       </div>
 
       <div class="premium-cta">
-        <h3>Want to buy with WhatsApp or Ko-fi?</h3>
-        <p>We've got you covered. Reach out directly and get the same premium pack.</p>
+        <h3>Need help choosing the right plan?</h3>
+        <p>Contact us anytime and we'll help you pick the best option for your business.</p>
         <div class="cta-buttons">
-          <a href="#" class="btn btn-whatsapp" id="whatsappBtn">&#128172; WhatsApp Order</a>
-          <a href="#" class="btn btn-kofi" id="kofiBtn">&#9749; Support on Ko-fi</a>
+          <a href="mailto:support@promptforge.com" class="btn btn-outline">&#9993; Contact Support</a>
         </div>
       </div>
     </div>
@@ -345,7 +376,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>After purchase via Gumroad or Ko-fi, you'll receive an email with a download link to your Premium Pack (a PDF and a text file with all 100 prompts). For WhatsApp orders, we'll send the files directly to your phone.</p>
+            <p>After purchase via PayPal, you'll receive an email with a download link to your Premium Pack (a PDF and a text file with all 100 prompts). Instant delivery — no waiting.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -387,9 +418,7 @@
       </div>
       <div class="footer-links">
         <h4>Purchase</h4>
-        <a href="#" id="footerGumroad">Gumroad</a>
-        <a href="#" id="footerKofi">Ko-fi</a>
-        <a href="#" id="footerWhatsapp">WhatsApp</a>
+        <a href="#" id="footerPaypal">Pay with PayPal</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -405,30 +434,54 @@
       <button class="modal-close" id="modalClose">&times;</button>
       <div class="modal-body">
         <span class="modal-icon">&#127881;</span>
-        <h2>Get Your Premium Prompt Pack</h2>
-        <p class="modal-desc">Choose your purchase method below. You'll get instant access after payment.</p>
-        <div class="modal-options">
-          <a href="https://gumroad.com" target="_blank" rel="noopener" class="modal-option gumroad">
-            <span class="modal-option-icon">&#128179;</span>
-            <span class="modal-option-title">Buy on Gumroad</span>
-            <span class="modal-option-desc">Pay via card or PayPal &rarr;</span>
-          </a>
-          <a href="https://ko-fi.com" target="_blank" rel="noopener" class="modal-option kofi">
-            <span class="modal-option-icon">&#9749;</span>
-            <span class="modal-option-title">Buy on Ko-fi</span>
-            <span class="modal-option-desc">Support &amp; get instant download &rarr;</span>
-          </a>
-          <a href="#" class="modal-option whatsapp" id="modalWhatsapp">
-            <span class="modal-option-icon">&#128172;</span>
-            <span class="modal-option-title">Order via WhatsApp</span>
-            <span class="modal-option-desc">Chat with us to purchase &rarr;</span>
-          </a>
+        <h2>Choose Your Pack</h2>
+        <p class="modal-desc">Secure checkout via PayPal. Instant delivery after payment.</p>
+        <div class="modal-plan-grid">
+          <div class="modal-plan">
+            <h3>Premium Pack</h3>
+            <div class="modal-price">$4.99</div>
+            <ul class="modal-features">
+              <li>&#10003; 100 advanced prompts</li>
+              <li>&#10003; 12 industry packs</li>
+              <li>&#10003; WhatsApp sending</li>
+              <li>&#10003; Lifetime updates</li>
+            </ul>
+            <div>
+              <style>.pp-ZSULES7LLQAJ8{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+              <form action="https://www.paypal.com/ncp/payment/ZSULES7LLQAJ8" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                <input class="pp-ZSULES7LLQAJ8" type="submit" value="Buy Now - $4.99" />
+                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" style="max-width:100%" />
+                <section style="font-size:0.7rem;color:var(--gray-500);">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" style="height:0.75rem;vertical-align:middle;" /></section>
+              </form>
+            </div>
+          </div>
+          <div class="modal-plan featured">
+            <span class="modal-plan-badge">Best Value</span>
+            <h3>Ultimate Bundle</h3>
+            <div class="modal-price">$9.95</div>
+            <ul class="modal-features">
+              <li>&#10003; 250 advanced prompts</li>
+              <li>&#10003; Video tutorials</li>
+              <li>&#10003; ChatGPT strategy guide</li>
+              <li>&#10003; Monthly prompt drops</li>
+            </ul>
+            <div>
+              <style>.pp-Q4LSN89J8CZHL{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+              <form action="https://www.paypal.com/ncp/payment/Q4LSN89J8CZHL" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                <input class="pp-Q4LSN89J8CZHL" type="submit" value="Buy Now - $9.95" />
+                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" style="max-width:100%" />
+                <section style="font-size:0.7rem;color:var(--gray-500);">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" style="height:0.75rem;vertical-align:middle;" /></section>
+              </form>
+            </div>
+          </div>
         </div>
         <p class="modal-guarantee">&#128170; 14-day money-back guarantee. No risk at all.</p>
       </div>
     </div>
   </div>
 
+  <script src="https://js.clerk.com/v1/browser.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

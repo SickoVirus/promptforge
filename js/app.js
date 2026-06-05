@@ -399,14 +399,12 @@ Each video should work as a standalone AND as part of the series.`
     modalClose: $('#modalClose'),
     buyPremiumBtn: $('#buyPremiumBtn'),
     buyBundleBtn: $('#buyBundleBtn'),
-    whatsappBtn: $('#whatsappBtn'),
-    kofiBtn: $('#kofiBtn'),
-    modalWhatsapp: $('#modalWhatsapp'),
+
+    // WhatsApp send
+    whatsappSendBtn: $('#whatsappSendBtn'),
 
     // Footer links
-    footerGumroad: $('#footerGumroad'),
-    footerKofi: $('#footerKofi'),
-    footerWhatsapp: $('#footerWhatsapp'),
+    footerPaypal: $('#footerPaypal'),
 
     // FAQ
     faqQuestions: $$('.faq-question'),
@@ -474,6 +472,7 @@ Each video should work as a standalone AND as part of the series.`
       `;
       elements.copyBtn.disabled = true;
       elements.regenerateBtn.disabled = true;
+      elements.whatsappSendBtn.disabled = true;
       return;
     }
 
@@ -508,6 +507,7 @@ Each video should work as a standalone AND as part of the series.`
     elements.outputBody.innerHTML = `<pre class="output-text">${escapeHtml(prompt)}</pre>`;
     elements.copyBtn.disabled = false;
     elements.regenerateBtn.disabled = false;
+    elements.whatsappSendBtn.disabled = false;
 
     // Progress template index
     currentTemplateIndex++;
@@ -578,6 +578,35 @@ Each video should work as a standalone AND as part of the series.`
   function regeneratePrompt() {
     generatePrompt();
   }
+
+  // ============================================
+  // AUTH INTEGRATION
+  // ============================================
+  // Wire up auth buttons
+  $('#signInBtn').addEventListener('click', () => Auth.openSignIn());
+  $('#signUpBtn').addEventListener('click', () => Auth.openSignUp());
+  $('#signOutBtn').addEventListener('click', () => Auth.signOut());
+
+  // Listen for auth changes to protect premium features
+  Auth.onAuthChange(({ isLoggedIn, role }) => {
+    // WhatsApp send: lock for free users, unlock for premium/ultimate
+    if (elements.whatsappSendBtn) {
+      if (isLoggedIn && role !== 'free') {
+        elements.whatsappSendBtn.classList.remove('premium-locked');
+        elements.whatsappSendBtn.title = 'Send this prompt via WhatsApp to your customers';
+      } else {
+        elements.whatsappSendBtn.classList.add('premium-locked');
+        elements.whatsappSendBtn.title = isLoggedIn
+          ? 'Upgrade to Premium to send via WhatsApp'
+          : 'Sign in and upgrade to send via WhatsApp';
+      }
+    }
+
+    // Show/hide upgrade prompts on premium pricing cards
+    document.querySelectorAll('.premium-feature-locked').forEach(el => {
+      el.style.display = (isLoggedIn && role !== 'free') ? 'none' : 'flex';
+    });
+  });
 
   // ============================================
   // NAVIGATION
@@ -672,6 +701,7 @@ Each video should work as a standalone AND as part of the series.`
   elements.generateBtn.addEventListener('click', generatePrompt);
   elements.copyBtn.addEventListener('click', copyToClipboard);
   elements.regenerateBtn.addEventListener('click', regeneratePrompt);
+  elements.whatsappSendBtn.addEventListener('click', sendViaWhatsApp);
   elements.mobileToggle.addEventListener('click', toggleMobileMenu);
 
   // Premium modal triggers
@@ -689,49 +719,29 @@ Each video should work as a standalone AND as part of the series.`
     if (e.key === 'Escape') closePremiumModal();
   });
 
-  // WhatsApp button in premium section
-  elements.whatsappBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const phone = prompt('Enter your WhatsApp number (with country code, e.g., +1234567890):');
-    if (phone) {
-      const message = encodeURIComponent('Hi! I want to buy the Premium Prompt Pack ($19)');
-      window.open(`https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${message}`, '_blank');
+  // WhatsApp send feature — open wa.me with the generated prompt
+  function sendViaWhatsApp() {
+    if (!currentPrompt) return;
+    // Free users cannot use WhatsApp send
+    if (!Auth.isLoggedIn || Auth.role === 'free') {
+      Auth.openSignUp();
+      return;
     }
-  });
-
-  // WhatsApp button in modal
-  elements.modalWhatsapp.addEventListener('click', function(e) {
-    e.preventDefault();
-    closePremiumModal();
-    setTimeout(() => elements.whatsappBtn.click(), 300);
-  });
-
-  // Ko-fi button
-  elements.kofiBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const kofiUsername = prompt('What is your Ko-fi username?', 'yourusername');
-    if (kofiUsername) {
-      window.open(`https://ko-fi.com/${kofiUsername}`, '_blank');
+    const phone = prompt('Enter the customer\'s WhatsApp number (with country code, e.g., +1234567890):', '+');
+    if (phone && phone.length > 1) {
+      // Truncate very long prompts to avoid URL length issues
+      const text = currentPrompt.length > 4000
+        ? currentPrompt.substring(0, 4000) + '... (full prompt on ChatGPT)'
+        : currentPrompt;
+      const whatsappUrl = `https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, '_blank');
     }
-  });
+  }
 
   // Footer links
-  elements.footerGumroad.addEventListener('click', function(e) {
+  elements.footerPaypal.addEventListener('click', function(e) {
     e.preventDefault();
     openPremiumModal();
-  });
-
-  elements.footerKofi.addEventListener('click', function(e) {
-    e.preventDefault();
-    const kofiUsername = prompt('What is your Ko-fi username?', 'yourusername');
-    if (kofiUsername) {
-      window.open(`https://ko-fi.com/${kofiUsername}`, '_blank');
-    }
-  });
-
-  elements.footerWhatsapp.addEventListener('click', function(e) {
-    e.preventDefault();
-    elements.whatsappBtn.click();
   });
 
   // Enter key in form fields
